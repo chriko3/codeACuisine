@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: Quicksand;
+  //src: url(angular-projects/codeACuisine/assets/fonts/Quicksand.ttf);
+  src: url(/assets/fonts/Quicksand.ttf);
+}
+
+:root {
+  --font-quicksand: 'Quicksand';
+
+  --color-green: rgba(30, 85, 21, 1);
+  --color-white: rgba(250, 240, 230, 1);
+
+  --font-size-14: 14;
+
+  --font-weight-500: 700;
+}
