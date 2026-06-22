@@ -7,12 +7,12 @@ import { Component, Input } from '@angular/core';
   styleUrl: './chef-label-component.scss',
 })
 export class ChefLabelComponent {
-  @Input() chefs: 1| 2 | 3 | 4 = 1;
-  chefAmount: number[] = [];
+  @Input() chef: 0| 1 | 2 | 3 = 0;
+  chefAmount: number[] = [1,2,3,4];
 
   ngOnInit() {
-    for (let index = 0; index < this.chefs; index++) {
-      this.chefAmount.push(this.chefs);
-    }
+    // for (let index = 0; index < this.chefs; index++) {
+    //   this.chefAmount.push(this.chefs);
+    // }
   }
 }

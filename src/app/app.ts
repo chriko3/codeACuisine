@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ChefLabelComponent } from './components/chef-label-component/chef-label-component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ChefLabelComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

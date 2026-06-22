@@ -1,0 +1,47 @@
+section {
+  width: 411px;
+  height: 338px;
+  border-radius: 20px;
+  background-color: rgba(219, 224, 219, 1);
+  box-sizing: border-box;
+  padding: 32px 24px;
+  font-family: var(--font-quicksand);
+  display:flex;
+  align-items: start;
+  flex-direction: column;
+  justify-content: space-between;
+  p {
+    margin: 0px;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.recipe {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: var(--font-size-24);
+  font-weight: 700;
+  color: rgba(30, 85, 21, 1);
+}
+
+.info {
+  font-size: var(--font-size-32);
+  color: rgba(16, 49, 11, 1);
+  font-weight: 700;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-20);
+  font-weight: 700;
+  color: rgba(57, 96, 57, 1);
+}
