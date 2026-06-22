@@ -1,0 +1,20 @@
+<section>
+  <p>{{ selected }}</p>
+  <svg
+    [class.rotate]="rotate"
+    (click)="toggle()"
+    width="10"
+    height="5"
+    viewBox="0 0 10 5"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M5 5L10 0L0 0L5 5Z" fill="#10310B" />
+  </svg>
+
+  <div class="dropDown" [style.display]="rotate ? 'flex' : 'none'">
+    <p (click)="select('piece'); toggle()">piece</p>
+    <p (click)="select('ml'); toggle()">ml</p>
+    <p (click)="select('gram'); toggle()">gram</p>
+  </div>
+</section>
