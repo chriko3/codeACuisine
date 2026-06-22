@@ -1,0 +1,48 @@
+button {
+  min-width: 236px;
+  height: 52px;
+  border: none;
+  outline: none;
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-20);
+  font-weight: 700;
+  display: flex;
+  box-sizing: border-box;
+  padding: 16px 26px;
+  background-color: transparent;
+  transition: background-color 0.15s ease-in;
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    p {
+      margin: 0px;
+    }
+  }
+}
+
+.rotate{
+    transform: rotate(180deg);
+}
+
+.green {
+  p {
+    color: rgba(57, 96, 57, 1);
+  }
+
+  &:hover {
+    background-color: rgba(57, 96, 57, 0.1);
+  }
+}
+
+.white {
+  p {
+    color: rgba(250, 240, 230, 1);
+  }
+
+  &:hover {
+    background-color: rgba(250, 224, 198, 0.2);
+  }
+}

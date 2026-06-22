@@ -1,0 +1,28 @@
+button {
+  min-width: 77px;
+  height: 32px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-20);
+  font-weight: 700;
+  color: rgba(30, 85, 21, 1);
+  background-color: rgba(250, 240, 230, 1);
+  transition: background-color 0.15s ease-in;
+
+  p {
+    margin: 0px;
+  }
+
+  &:hover {
+    background-color: rgba(250, 224, 198, 1);
+  }
+}
+
+.toggle {
+  background-color: rgba(57, 96, 57, 0.2);
+  p {
+    color: rgba(16, 49, 11, 1);
+  }
+}

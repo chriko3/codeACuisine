@@ -1,0 +1,36 @@
+button {
+  width: 183px;
+  height: 60px;
+  border: none;
+  outline: none;
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-24);
+  font-weight: 700;
+  box-sizing: border-box;
+  padding: 15px 26px;
+  transition: background-color 0.15s ease-in;
+
+  p {
+    margin: 0px;
+  }
+}
+
+.green {
+  background-color: rgba(57, 96, 57, 1);
+  p {
+    color: rgba(250, 240, 230, 1);
+  }
+  &:hover {
+    background-color: rgba(5, 94, 5, 1);
+  }
+}
+
+.white {
+  background-color: rgba(250, 240, 230, 1);
+  p {
+    color: rgba(0, 128, 0, 1);
+  }
+  &:hover {
+    background-color: rgba(250, 224, 198, 1);
+  }
+}

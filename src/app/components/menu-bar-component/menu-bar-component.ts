@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core';
 export class MenuBarComponent {
   @Input() color: 'green' | 'white' = 'green';
   @Input() displayArrow: true | false = false;
+  @Input() text?:string;
 }

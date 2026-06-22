@@ -1,22 +1,26 @@
 section {
   min-height: 176px;
+  max-height: 209px;
   width: 577px;
   background-color: var(--background-light-green);
   border-radius: 20px;
   padding: 25px 33px;
   box-sizing: border-box;
   font-family: var(--font-quicksand);
-  font-size: var(--font-size-20);
-  color: var(--color-green);
+  font-size: var(--font-size-16);
+  color: var(--color-dark-green);
   font-weight: var(--font-weight-500);
 }
 
 .container {
   display: flex;
-  align-items: center;
+  align-items: start;
   height: 100%;
+  width: 100%;
+  gap: 32px;
 }
 
+// left
 .left {
   width: 300px;
 }
@@ -32,6 +36,25 @@ section {
   margin-left: 24px;
   margin-top: 4px;
   p {
-
+    margin: 4px;
   }
+}
+
+//right
+.right {
+  width: 178px;
+  background-color: red;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.amount {
+  width: 60px;
+  height: 36px;
+  background-color: var(--background-light-beige);
+  border-radius: 20px;
 }
