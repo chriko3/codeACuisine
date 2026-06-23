@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MostLikedRecipesComponent } from './components/most-liked-recipes-component/most-liked-recipes-component';
+import { SingleRecipeCookbookComponent } from './components/single-recipe-cookbook-component/single-recipe-cookbook-component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MostLikedRecipesComponent],
+  imports: [RouterOutlet, SingleRecipeCookbookComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

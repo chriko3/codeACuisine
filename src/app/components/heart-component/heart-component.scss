@@ -1,0 +1,14 @@
+section {
+  width: 52px;
+  height: 48px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(215, 223, 215, 0.6);
+  }
+}
