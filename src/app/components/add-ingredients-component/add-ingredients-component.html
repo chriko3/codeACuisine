@@ -2,18 +2,18 @@
   <div class="container">
     <div class="left">
       <p>Ingredient</p>
-      <div class="search"></div>
-      <div class="results">
+        <app-input-field-component></app-input-field-component>
+      <!-- <div class="results">
         <p>Pasta</p>
         <p>Pastrami</p>
         <p>Passionsfrut</p>
-      </div>
+      </div> -->
     </div>
     <div class="right">
       <p>Serving size</p>
       <div class="input">
-        <div class="amount"></div>
-
+        <app-input-field-component [placeholder]="'100'" [type]="'number'"></app-input-field-component>
+        <app-measurements-component></app-measurements-component>
       </div>
     </div>
   </div>

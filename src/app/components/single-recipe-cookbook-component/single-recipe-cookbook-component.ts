@@ -11,8 +11,8 @@ export class SingleRecipeCookbookComponent {
   @Input() timeInMin = 0;
   @Input() number = 0;
   @Input() time: 'Quick' | 'Medium' | 'Complex' = 'Quick';
-  @Input() cuisine: 'German' | 'Austrian' | 'Italian' | 'Japanese' | 'Gourmet' | 'Fusion' =
-    'Austrian';
+  @Input() cuisine: 'German' | 'Indian' | 'Italian' | 'Japanese' | 'Gourmet' | 'Fusion' =
+    'Japanese';
   @Input() diet: 'Vegetarian' | 'Vegan' | 'Keto' | 'No preferences' = 'No preferences';
   @Input() likes = 0;
 }

@@ -1,0 +1,35 @@
+section {
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 10px;
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-32);
+  color: rgba(30, 85, 21, 1);
+  font-weight: 700;
+
+  display: grid;
+  place-items: center;
+
+  svg {
+
+    grid-area: 1 / 1;
+  }
+
+  p {
+    margin: 0px;
+    grid-area: 1 / 1;
+  }
+}
+
+.m-t-25 {
+    margin-top: 25px !important;
+}
+
+.m-b-10{
+    margin-bottom: 10px !important;
+}
+
+.cuisine{
+    font-size: 40px;
+    color: rgba(16, 49, 11, 1);
+}
