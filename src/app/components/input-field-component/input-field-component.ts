@@ -9,4 +9,6 @@ import { Component, Input } from '@angular/core';
 export class InputFieldComponent {
   @Input() placeholder = '';
   @Input() type: 'text' | 'number' = 'text';
+
+  
 }

@@ -1,8 +1,7 @@
-<section>
+<section (click)="toggle()">
   <p>{{ selected }}</p>
   <svg
     [class.rotate]="rotate"
-    (click)="toggle()"
     width="10"
     height="5"
     viewBox="0 0 10 5"
@@ -13,8 +12,8 @@
   </svg>
 
   <div class="dropDown" [style.display]="rotate ? 'flex' : 'none'">
-    <p (click)="select('piece'); toggle()">piece</p>
-    <p (click)="select('ml'); toggle()">ml</p>
-    <p (click)="select('gram'); toggle()">gram</p>
+    <p (click)="select('piece')">piece</p>
+    <p (click)="select('ml')">ml</p>
+    <p (click)="select('gram')">gram</p>
   </div>
 </section>

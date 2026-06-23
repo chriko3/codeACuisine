@@ -17,7 +17,7 @@ section {
   align-items: start;
   height: 100%;
   width: 100%;
-  gap: 32px;
+  gap: 25px;
 }
 
 // left
@@ -35,12 +35,12 @@ section {
 
 //right
 .right {
-  width: 178px;
+  flex: 1;
 }
 
 .input {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 5px;
 }

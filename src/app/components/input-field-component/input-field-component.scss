@@ -1,5 +1,6 @@
 input {
   width: 100%;
+  min-width: 60px;
   height: 36px;
   border-radius: 20px;
   background-color: rgba(250, 240, 230, 0.8);
@@ -10,4 +11,15 @@ input {
   color: rgba(16, 49, 11, 1);
   font-size: var(--font-size-18);
   padding: 8px 12px;
+}
+
+input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

@@ -12,12 +12,9 @@ section {
   justify-content: center;
   gap: 4px;
   position: relative;
+  cursor: pointer;
   p {
     margin: 0px;
-  }
-
-  svg {
-    cursor: pointer;
   }
 }
 
@@ -35,7 +32,6 @@ section {
   p {
     &:hover {
       font-weight: 700;
-      cursor: pointer;
     }
   }
 }
