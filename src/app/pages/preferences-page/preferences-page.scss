@@ -1,0 +1,72 @@
+.preferences {
+  background-color: rgba(255, 255, 255, 1);
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  p {
+    font-family: var(--font-quicksand);
+    color: rgba(16, 49, 11, 1);
+    margin: 0px;
+  }
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.head {
+  font-size: var(--font-size-28);
+  font-weight: 700;
+  color: rgba(16, 49, 11, 1);
+}
+
+.settings {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content {
+  div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}
+
+.preferences-box {
+  width: 610px;
+  height: 420px;
+  background-color: rgba(57, 96, 57, 0.2);
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 32px 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-24);
+  svg{
+    margin-right: 4px;
+  }
+}
+
+.tags {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  app-tag-button-component {
+    margin-right: 5px !important;
+  }
+}

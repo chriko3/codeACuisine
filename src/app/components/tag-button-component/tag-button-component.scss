@@ -1,19 +1,27 @@
+p {
+  font-family: var(--font-quicksand);
+  margin: 0px;
+}
+
+div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  font-size: var(--font-size-14);
+  color: rgba(30, 85, 21, 1);
+}
+
 button {
   min-width: 77px;
   height: 32px;
   border-radius: 30px;
   border: none;
   outline: none;
-  font-family: var(--font-quicksand);
   font-size: var(--font-size-20);
-  font-weight: 700;
   color: rgba(30, 85, 21, 1);
   background-color: rgba(250, 240, 230, 1);
   transition: background-color 0.15s ease-in;
-
-  p {
-    margin: 0px;
-  }
 
   &:hover {
     background-color: rgba(250, 224, 198, 1);

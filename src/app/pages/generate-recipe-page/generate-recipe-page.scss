@@ -12,6 +12,9 @@
 .menu {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  margin: 0px 170px;
+  gap: 68px;
 }
 
 .head {
@@ -32,4 +35,13 @@
 }
 
 .input {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.bottom{
+  display:flex;
+  justify-content: end;
 }

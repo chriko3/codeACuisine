@@ -1,3 +1,6 @@
-<button (click)="toggle()" [class.toggle]="isSelected">
-    <p>{{text}}</p>
-</button>
+<div>
+  <button (click)="toggle()" [class.toggle]="isSelected">
+    <p>{{ text }}</p>
+  </button>
+  <p>{{optionalText}}</p>
+</div>

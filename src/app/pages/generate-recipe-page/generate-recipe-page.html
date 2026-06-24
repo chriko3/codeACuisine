@@ -8,7 +8,16 @@
         <p>Got random stuff in your kitchen? Pop it in—we've got the perfect recipe waiting!</p>
       </div>
 
-      <div class="input"></div>
+      <div class="input">
+        <app-add-ingredients-component></app-add-ingredients-component>
+        <app-ingredients-list-component></app-ingredients-list-component>
+      </div>
+      <div class="bottom">
+        <app-primary-button-component
+          [text]="'Next step'"
+          routerLink="/preferences"
+        ></app-primary-button-component>
+      </div>
     </div>
   </div>
 </div>

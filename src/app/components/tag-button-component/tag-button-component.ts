@@ -8,6 +8,7 @@ import { Component, Input, input } from '@angular/core';
 })
 export class TagButtonComponent {
   @Input() text?: string;
+  @Input() optionalText?:string;
 
   isSelected = false;
 
