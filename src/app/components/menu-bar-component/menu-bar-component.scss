@@ -13,6 +13,11 @@ section {
   box-sizing: border-box;
 }
 
+svg {
+  cursor: pointer;
+  outline: none;
+}
+
 .arrow {
   position: absolute;
   bottom: 0px;

@@ -1,15 +1,15 @@
-button{
-    width: 20px;
-    height: 20px;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    display:flex;
-    align-items: center;
-    justify-content: center;
+button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease-in;
 
-    
-    &:hover{
-        background-color: rgba(250, 240, 230, 1);
-    }
+  &:hover {
+    background-color: rgba(250, 240, 230, 1);
+  }
 }

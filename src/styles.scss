@@ -8,6 +8,28 @@ button {
   cursor: pointer;
 }
 
+button,
+div,
+span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+.wrapper {
+  min-height: 100vh;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
 ::selection {
   background: rgba(57, 96, 57, 0.1);
 }
@@ -28,6 +50,9 @@ button {
   --font-size-24: 24px;
   --font-size-28: 28px;
   --font-size-32: 32px;
+  --font-size-48: 48px;
+  --font-size-54: 54px;
+  --font-size-104: 104px;
 
   --font-weight-500: 700;
 }
