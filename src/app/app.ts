@@ -1,12 +1,16 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
   protected readonly title = signal('codeACuisine');
+  @HostListener('document:contextmenu', ['$event'])
+  blockRightClick(event: MouseEvent) {
+    event.preventDefault();
+  }
 }

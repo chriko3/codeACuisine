@@ -1,6 +1,6 @@
 button{
-    min-width: 33px;
-    height: 27px;
+    min-width: 30px;
+    height: 20px;
     background-color: rgba(196, 208, 196, 0.4);
     border: none;
     outline: none;
@@ -10,6 +10,9 @@ button{
     color: rgba(16, 49, 11, 1);
     box-sizing: border-box;
     padding: 2px 8px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
     p{
         margin: 0px;
     }
