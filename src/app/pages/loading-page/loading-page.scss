@@ -9,3 +9,27 @@
     margin: 0px;
   }
 }
+
+.container {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  font-size: var(--font-size-48);
+  font-weight: 700;
+  gap: 32px;
+  
+  p {
+    color: rgba(250, 240, 230, 1);
+  }
+}
+
+.animation {
+  width: 253px;
+  height: 309px;
+  background-color: rgba(196, 208, 196, 1);
+  border-radius: 20px;
+}
