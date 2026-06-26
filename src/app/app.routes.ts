@@ -4,6 +4,7 @@ import { GenerateRecipePage } from './pages/generate-recipe-page/generate-recipe
 import { PreferencesPage } from './pages/preferences-page/preferences-page';
 import { LoadingPage } from './pages/loading-page/loading-page';
 import { ResultsPage } from './pages/results-page/results-page';
+import { RecipePage } from './pages/recipe-page/recipe-page';
 
 export const routes: Routes = [
   { path: '', component: HomePage },
@@ -11,4 +12,5 @@ export const routes: Routes = [
   { path: 'preferences', component: PreferencesPage },
   { path: 'loading', component: LoadingPage },
   { path: 'results', component: ResultsPage },
+  { path: 'recipe', component: RecipePage },
 ];

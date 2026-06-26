@@ -1,3 +1,35 @@
 <div class="results">
-  <div class="wrapper"></div>
+  <div class="wrapper">
+    <app-menu-bar-component [color]="'white'"></app-menu-bar-component>
+
+    <div class="head">
+      <div class="left">
+        <p>The recipe results</p>
+        <p>
+          We took what you have and let our AI do the thinking. Here are 3 easy recipes you can make
+          right now!
+        </p>
+        <div class="tags">
+          <app-tag-button-component [text]="''"></app-tag-button-component>
+          <app-tag-button-component [text]="''"></app-tag-button-component>
+          <app-tag-button-component [text]="''"></app-tag-button-component>
+        </div>
+      </div>
+
+      <div class="right">
+        <img class="plate1" src="assets/img/ki.png" alt="" />
+      </div>
+    </div>
+
+    <div class="list">
+      <app-recipe-card-results-component
+        [number]="1"
+        [title]="'title'"
+        [timeInMin]="12"
+        routerLink="/recipe"
+      ></app-recipe-card-results-component>
+      <app-recipe-card-results-component></app-recipe-card-results-component>
+      <app-recipe-card-results-component></app-recipe-card-results-component>
+    </div>
+  </div>
 </div>
