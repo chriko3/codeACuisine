@@ -1,7 +1,6 @@
 section {
   width: 100%;
   box-sizing: border-box;
-  padding-right: 10px;
   font-family: var(--font-quicksand);
   font-size: var(--font-size-32);
   color: rgba(30, 85, 21, 1);
@@ -11,7 +10,6 @@ section {
   place-items: center;
 
   svg {
-
     grid-area: 1 / 1;
   }
 

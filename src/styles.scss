@@ -4,9 +4,17 @@ body {
   padding: 0;
 }
 
-button {
-  cursor: pointer;
+body {
+  cursor:
+    url('/assets/img/cursor.png') 0 0,
+    auto;
 }
+button {
+  cursor:
+    url('/assets/img/cursor_hand.png') 0 0,
+    pointer;
+}
+
 
 button,
 div,
@@ -47,6 +55,7 @@ img {
   --font-size-16: 16px;
   --font-size-18: 18px;
   --font-size-20: 20px;
+  --font-size-22: 22px;
   --font-size-24: 24px;
   --font-size-28: 28px;
   --font-size-32: 32px;

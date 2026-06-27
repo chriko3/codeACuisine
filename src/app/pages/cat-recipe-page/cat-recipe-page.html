@@ -1,0 +1,21 @@
+<div class="cat-recipe">
+  <div class="wrapper">
+    <app-menu-bar-component
+      [displayArrow]="true"
+      [text]="'Cookbook'"
+      [goTo]="'/cookbook'"
+    ></app-menu-bar-component>
+
+    <div class="generate">
+      <app-primary-button-component [text]="'Generate a recipe'"></app-primary-button-component>
+    </div>
+
+    <div class="all-recipes">
+        <app-single-cuisine-component [title]="capitalized"></app-single-cuisine-component>
+        
+        <div class="list">
+
+        </div>
+    </div>
+  </div>
+</div>

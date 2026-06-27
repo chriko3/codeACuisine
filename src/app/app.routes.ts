@@ -5,6 +5,8 @@ import { PreferencesPage } from './pages/preferences-page/preferences-page';
 import { LoadingPage } from './pages/loading-page/loading-page';
 import { ResultsPage } from './pages/results-page/results-page';
 import { RecipePage } from './pages/recipe-page/recipe-page';
+import { CookbookPage } from './pages/cookbook-page/cookbook-page';
+import { CatRecipePage } from './pages/cat-recipe-page/cat-recipe-page';
 
 export const routes: Routes = [
   { path: '', component: HomePage },
@@ -13,4 +15,6 @@ export const routes: Routes = [
   { path: 'loading', component: LoadingPage },
   { path: 'results', component: ResultsPage },
   { path: 'recipe', component: RecipePage },
+  { path: 'cookbook', component: CookbookPage },
+  { path: 'recipes/:id', component: CatRecipePage },
 ];

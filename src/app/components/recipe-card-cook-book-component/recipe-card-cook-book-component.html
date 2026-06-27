@@ -1,6 +1,21 @@
 <section>
-    <p>{{text}}</p>
-    <div>
-
-    </div>
+  @if (text == 'Italian') {
+    <p>{{ text }} cuisine 🫴🏼</p>
+    <img class="plate1" src="assets/img/italian.png" alt="" />
+  } @else if (text == 'German') {
+    <p>{{ text }} cuisine 🥨</p>
+    <img class="plate1" src="assets/img/german.png" alt="" />
+  } @else if (text == 'Japanese') {
+    <p>{{ text }} cuisine 🍙</p>
+    <img class="plate1" src="assets/img/japanese.png" alt="" />
+  } @else if (text == 'Gourmet') {
+    <p>{{ text }} cuisine ✨</p>
+    <img class="plate1" src="assets/img/gourmet.png" alt="" />
+  } @else if (text == 'Indian') {
+    <p>{{ text }} cuisine 🍛</p>
+    <img class="plate1" src="assets/img/indian.png" alt="" />
+  } @else if (text == 'Fusion') {
+    <p>{{ text }} cuisine 🍢</p>
+    <img class="plate1" src="assets/img/fusion.png" alt="" />
+  }
 </section>
