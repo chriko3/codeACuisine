@@ -14,6 +14,22 @@
   justify-content: end;
 }
 
-.all-recipes{
-    margin-top: 68px;;
+.all-recipes {
+  margin-top: 68px;
+}
+
+.list {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  gap: 8px;
+}
+
+.navigation{
+  margin-top: 68px;
+  padding-bottom: 68px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -4,10 +4,17 @@ import { ActivatedRoute } from '@angular/router';
 import { MenuBarComponent } from '../../components/menu-bar-component/menu-bar-component';
 import { PrimaryButtonComponent } from '../../components/primary-button-component/primary-button-component';
 import { SingleCuisineComponent } from '../../components/single-cuisine-component/single-cuisine-component';
+import { SingleRecipeCookbookComponent } from '../../components/single-recipe-cookbook-component/single-recipe-cookbook-component';
 
 @Component({
   selector: 'app-cat-recipe-page',
-  imports: [RouterLink, MenuBarComponent, PrimaryButtonComponent, SingleCuisineComponent],
+  imports: [
+    RouterLink,
+    MenuBarComponent,
+    PrimaryButtonComponent,
+    SingleCuisineComponent,
+    SingleRecipeCookbookComponent,
+  ],
   templateUrl: './cat-recipe-page.html',
   styleUrl: './cat-recipe-page.scss',
 })

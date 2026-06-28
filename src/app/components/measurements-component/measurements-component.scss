@@ -12,7 +12,9 @@ section {
   justify-content: center;
   gap: 4px;
   position: relative;
-  cursor: pointer;
+  cursor:
+    url('/assets/img/cursor_hand.png') 0 0,
+    pointer;
   p {
     margin: 0px;
   }
@@ -27,11 +29,13 @@ section {
   display: flex;
   align-items: start;
   flex-direction: column;
-  margin-left: 18px;
+  margin-left: 10px;
+  gap: 1px;
 
   p {
     &:hover {
       font-weight: 700;
+      text-align: start;
     }
   }
 }
