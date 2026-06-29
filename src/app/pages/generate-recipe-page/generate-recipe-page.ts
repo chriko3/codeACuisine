@@ -4,6 +4,7 @@ import { AddIngredientsComponent } from '../../components/add-ingredients-compon
 import { IngredientsListComponent } from '../../components/ingredients-list-component/ingredients-list-component';
 import { PrimaryButtonComponent } from '../../components/primary-button-component/primary-button-component';
 import { RouterLink } from '@angular/router';
+import { IngredientInterface } from '../../services/ingredient-interface';
 
 @Component({
   selector: 'app-generate-recipe-page',
@@ -17,4 +18,39 @@ import { RouterLink } from '@angular/router';
   templateUrl: './generate-recipe-page.html',
   styleUrl: './generate-recipe-page.scss',
 })
-export class GenerateRecipePage {}
+export class GenerateRecipePage {
+  ingredient = '';
+  amount = '';
+  type = 'gram';
+
+  ingredientList: IngredientInterface[] = [];
+
+  onIngredientChange(value: string) {
+    this.ingredient = value;
+  }
+
+  onAmountChange(value: string) {
+    this.amount = value;
+  }
+
+  onSelectedChange(value: string) {
+    this.type = value;
+  }
+
+  onClickAddToList(){
+
+  }
+
+  addToIngredientsList() {
+    if (this.ingredient != '' || this.amount != '') {
+      this.ingredientList.push({
+        ingredient: this.ingredient,
+        amount: this.amount,
+        type: this.type,
+      });
+      this.ingredient = '';
+      this.amount = '';
+      console.log(this.ingredientList);
+    }
+  }
+}

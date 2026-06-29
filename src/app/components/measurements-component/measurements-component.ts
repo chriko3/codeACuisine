@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-measurements-component',
@@ -10,11 +10,14 @@ export class MeasurementsComponent {
   rotate = false;
   selected = "gram";
 
+  @Output() selectedSend = new EventEmitter<string>();
+
   toggle() {
     this.rotate = !this.rotate;
   }
 
   select(selection:string){
     this.selected = selection;
+    this.selectedSend.emit(selection);
   }
 }

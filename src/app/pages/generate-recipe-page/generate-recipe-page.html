@@ -9,8 +9,13 @@
       </div>
 
       <div class="input">
-        <app-add-ingredients-component></app-add-ingredients-component>
-        <app-ingredients-list-component></app-ingredients-list-component>
+        <app-add-ingredients-component
+          (ingredient)="onIngredientChange($event)"
+          (amount)="onAmountChange($event)"
+          (selected)="onSelectedChange($event)"
+          (clicked)="addToIngredientsList()"
+        ></app-add-ingredients-component>
+        <app-ingredients-list-component (click)="addToIngredientsList()"></app-ingredients-list-component>
       </div>
       <div class="bottom">
         <app-primary-button-component

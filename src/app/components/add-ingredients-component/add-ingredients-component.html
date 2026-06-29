@@ -2,7 +2,9 @@
   <div class="container">
     <div class="left">
       <p>Ingredient</p>
-      <app-input-field-component></app-input-field-component>
+      <app-input-field-component
+        (inputTextSend)="onIngredientInput($event)"
+      ></app-input-field-component>
       <!-- <div class="results">
         <p>Pasta</p>
         <p>Pastrami</p>
@@ -13,11 +15,12 @@
       <p>Serving size</p>
       <div class="input">
         <app-input-field-component
+          (inputTextSend)="onAmountInput($event)"
           [placeholder]="'100'"
           [type]="'number'"
         ></app-input-field-component>
-        <app-measurements-component></app-measurements-component>
-        <app-add-component></app-add-component>
+        <app-measurements-component (selectedSend)="onSelected($event)"> </app-measurements-component>
+        <app-add-component (clicked)="onClick()"></app-add-component>
       </div>
     </div>
   </div>
