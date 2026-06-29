@@ -27,7 +27,7 @@
   <div class="right">
     <div class="category">{{ diet }}</div>
     <div class="category">{{ time }}</div>
-    <div class="category">
+    <div class="category cursor-pointer">
       <svg
         width="22"
         height="22"
@@ -42,5 +42,6 @@
       </svg>
       <p>{{ likes }}</p>
     </div>
+    <app-edit-delete-component [editOrDelete]="'delete'"></app-edit-delete-component>
   </div>
 </section>

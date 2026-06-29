@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { MenuBarComponent } from '../../components/menu-bar-component/menu-bar-component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MinusPlusComponent } from '../../components/minus-plus-component/minus-plus-component';
 import { PaginationComponent } from '../../components/pagination-component/pagination-component';
 import { TagButtonComponent } from '../../components/tag-button-component/tag-button-component';
 import { PrimaryButtonComponent } from '../../components/primary-button-component/primary-button-component';
+import { PreferencesInterface } from '../../services/preferences-interface';
 
 @Component({
   selector: 'app-preferences-page',
@@ -22,7 +23,12 @@ import { PrimaryButtonComponent } from '../../components/primary-button-componen
 export class PreferencesPage {
   portions = 1;
   persons = 1;
-  activeTag = '';
+  activeTagCookingTime = '';
+  activeTagCuisine = '';
+  activeTagDietPreferences = '';
+
+  allPreferences: PreferencesInterface[] = [];
+  constructor(private router: Router) {}
 
   increase(portionsOrPersons: 'portions' | 'persons') {
     if (portionsOrPersons == 'persons') {
@@ -42,7 +48,34 @@ export class PreferencesPage {
     }
   }
 
-  onSelectedTag(tag: string) {
-    this.activeTag = tag;
+  onSelectedTagCookingTime(tag: string) {
+    this.activeTagCookingTime = tag;
+  }
+
+  onSelectedCuisine(tag: string) {
+    this.activeTagCuisine = tag;
+  }
+
+  onSelectedDietPreferences(tag: string) {
+    this.activeTagDietPreferences = tag;
+  }
+
+  generateARecipe() {
+    if (
+      this.activeTagCookingTime == '' ||
+      this.activeTagCuisine == '' ||
+      this.activeTagDietPreferences == ''
+    ) {
+    } else {
+      this.allPreferences.push({
+        portions: this.portions,
+        persons: this.persons,
+        cookingTime: this.activeTagCookingTime,
+        cuisine: this.activeTagCuisine,
+        dietPreferences: this.activeTagDietPreferences,
+      });
+      this.router.navigate(['\loading']);
+      console.log(this.allPreferences);
+    }
   }
 }

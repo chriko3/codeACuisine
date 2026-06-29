@@ -70,3 +70,9 @@ section {
   align-items: center;
   justify-content: center;
 }
+
+.cursor-pointer {
+  cursor:
+    url('/assets/img/cursor_hand.png') 0 0,
+    pointer;
+}

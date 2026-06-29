@@ -58,20 +58,20 @@
           </div>
           <div class="tags">
             <app-tag-button-component
-              (selectedTag)="onSelectedTag($event)"
-              [isSelected]="activeTag == 'Quick'"
+              (selectedTag)="onSelectedTagCookingTime($event)"
+              [isSelected]="activeTagCookingTime == 'Quick'"
               [text]="'Quick'"
               [optionalText]="'up to 20min'"
             ></app-tag-button-component>
             <app-tag-button-component
-              (selectedTag)="onSelectedTag($event)"
-              [isSelected]="activeTag == 'Medium'"
+              (selectedTag)="onSelectedTagCookingTime($event)"
+              [isSelected]="activeTagCookingTime == 'Medium'"
               [text]="'Medium'"
               [optionalText]="'25-40min'"
             ></app-tag-button-component>
             <app-tag-button-component
-              (selectedTag)="onSelectedTag($event)"
-              [isSelected]="activeTag == 'Complex'"
+              (selectedTag)="onSelectedTagCookingTime($event)"
+              [isSelected]="activeTagCookingTime == 'Complex'"
               [text]="'Complex'"
               [optionalText]="'over 45min'"
             ></app-tag-button-component>
@@ -95,12 +95,36 @@
             <p>Cuisine:</p>
           </div>
           <div class="tags">
-            <app-tag-button-component [text]="'German'"></app-tag-button-component>
-            <app-tag-button-component [text]="'Italian'"></app-tag-button-component>
-            <app-tag-button-component [text]="'Indian'"></app-tag-button-component>
-            <app-tag-button-component [text]="'Japanese'"></app-tag-button-component>
-            <app-tag-button-component [text]="'Gourmet'"></app-tag-button-component>
-            <app-tag-button-component [text]="'Fusion'"></app-tag-button-component>
+            <app-tag-button-component
+              [text]="'German'"
+              (selectedTag)="onSelectedCuisine($event)"
+              [isSelected]="activeTagCuisine == 'German'"
+            ></app-tag-button-component>
+            <app-tag-button-component
+              [text]="'Italian'"
+              (selectedTag)="onSelectedCuisine($event)"
+              [isSelected]="activeTagCuisine == 'Italian'"
+            ></app-tag-button-component>
+            <app-tag-button-component
+              [text]="'Indian'"
+              (selectedTag)="onSelectedCuisine($event)"
+              [isSelected]="activeTagCuisine == 'Indian'"
+            ></app-tag-button-component>
+            <app-tag-button-component
+              [text]="'Japanese'"
+              (selectedTag)="onSelectedCuisine($event)"
+              [isSelected]="activeTagCuisine == 'Japanese'"
+            ></app-tag-button-component>
+            <app-tag-button-component
+              [text]="'Gourmet'"
+              (selectedTag)="onSelectedCuisine($event)"
+              [isSelected]="activeTagCuisine == 'Gourmet'"
+            ></app-tag-button-component>
+            <app-tag-button-component
+              [text]="'Fusion'"
+              (selectedTag)="onSelectedCuisine($event)"
+              [isSelected]="activeTagCuisine == 'Fusion'"
+            ></app-tag-button-component>
           </div>
         </div>
 
@@ -121,16 +145,33 @@
             <p>Diet preferences:</p>
           </div>
           <div class="tags">
-            <app-tag-button-component [text]="'Vegetarian'"></app-tag-button-component>
-            <app-tag-button-component [text]="'Vegan'"></app-tag-button-component>
-            <app-tag-button-component [text]="'Keto'"></app-tag-button-component>
-            <app-tag-button-component [text]="'No preferences'"></app-tag-button-component>
+            <app-tag-button-component
+              [text]="'Vegetarian'"
+              (selectedTag)="onSelectedDietPreferences($event)"
+              [isSelected]="activeTagDietPreferences == 'Vegetarian'"
+            ></app-tag-button-component>
+            <app-tag-button-component
+              [text]="'Vegan'"
+              (selectedTag)="onSelectedDietPreferences($event)"
+              [isSelected]="activeTagDietPreferences == 'Vegan'"
+            ></app-tag-button-component>
+            <app-tag-button-component
+              [text]="'Keto'"
+              (selectedTag)="onSelectedDietPreferences($event)"
+              [isSelected]="activeTagDietPreferences == 'Keto'"
+            ></app-tag-button-component>
+            <app-tag-button-component
+              [text]="'No preferences'"
+              (selectedTag)="onSelectedDietPreferences($event)"
+              [isSelected]="activeTagDietPreferences == 'No preferences'"
+            ></app-tag-button-component>
           </div>
         </div>
       </div>
       <app-primary-button-component
+  
         [text]="'Generate a recipe'"
-        routerLink="/loading"
+        (click)="generateARecipe()"
       ></app-primary-button-component>
     </div>
   </div>
