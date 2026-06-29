@@ -15,20 +15,26 @@
         <div class="content">
           <p>How many portions you need?</p>
           <div>
-            <app-minus-plus-component></app-minus-plus-component>
-            <app-pagination-component></app-pagination-component>
+            <app-minus-plus-component (clicked)="decrease('portions')"></app-minus-plus-component>
+            <app-pagination-component [number]="portions"></app-pagination-component>
             <p>Portions</p>
-            <app-minus-plus-component [minusOrPlus]="'plus'"></app-minus-plus-component>
+            <app-minus-plus-component
+              [minusOrPlus]="'plus'"
+              (clicked)="increase('portions')"
+            ></app-minus-plus-component>
           </div>
         </div>
 
         <div class="content">
           <p>How many are cooking?</p>
           <div>
-            <app-minus-plus-component></app-minus-plus-component>
-            <app-pagination-component></app-pagination-component>
+            <app-minus-plus-component (clicked)="decrease('persons')"></app-minus-plus-component>
+            <app-pagination-component [number]="persons"></app-pagination-component>
             <p>Person</p>
-            <app-minus-plus-component [minusOrPlus]="'plus'"></app-minus-plus-component>
+            <app-minus-plus-component
+              [minusOrPlus]="'plus'"
+              (clicked)="increase('persons')"
+            ></app-minus-plus-component>
           </div>
         </div>
       </div>
@@ -52,14 +58,20 @@
           </div>
           <div class="tags">
             <app-tag-button-component
+              (selectedTag)="onSelectedTag($event)"
+              [isSelected]="activeTag == 'Quick'"
               [text]="'Quick'"
               [optionalText]="'up to 20min'"
             ></app-tag-button-component>
             <app-tag-button-component
+              (selectedTag)="onSelectedTag($event)"
+              [isSelected]="activeTag == 'Medium'"
               [text]="'Medium'"
               [optionalText]="'25-40min'"
             ></app-tag-button-component>
             <app-tag-button-component
+              (selectedTag)="onSelectedTag($event)"
+              [isSelected]="activeTag == 'Complex'"
               [text]="'Complex'"
               [optionalText]="'over 45min'"
             ></app-tag-button-component>

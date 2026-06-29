@@ -37,10 +37,6 @@ export class GenerateRecipePage {
     this.type = value;
   }
 
-  onClickAddToList(){
-
-  }
-
   addToIngredientsList() {
     if (this.ingredient != '' || this.amount != '') {
       this.ingredientList.push({

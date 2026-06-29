@@ -19,4 +19,30 @@ import { PrimaryButtonComponent } from '../../components/primary-button-componen
   templateUrl: './preferences-page.html',
   styleUrl: './preferences-page.scss',
 })
-export class PreferencesPage {}
+export class PreferencesPage {
+  portions = 1;
+  persons = 1;
+  activeTag = '';
+
+  increase(portionsOrPersons: 'portions' | 'persons') {
+    if (portionsOrPersons == 'persons') {
+      if (this[portionsOrPersons] < 4) {
+        this[portionsOrPersons]++;
+      }
+    } else {
+      if (this[portionsOrPersons] < 10) {
+        this[portionsOrPersons]++;
+      }
+    }
+  }
+
+  decrease(portionsOrPersons: 'portions' | 'persons') {
+    if (this[portionsOrPersons] > 1) {
+      this[portionsOrPersons]--;
+    }
+  }
+
+  onSelectedTag(tag: string) {
+    this.activeTag = tag;
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-tag-button-component',
@@ -9,12 +9,11 @@ import { Component, Input, input } from '@angular/core';
 export class TagButtonComponent {
   @Input() text?: string;
   @Input() optionalText?:string;
+  @Input() isSelected = false;
 
-  isSelected = false;
+  @Output() selectedTag = new EventEmitter<string>();
 
   toggle() {
-    this.isSelected = !this.isSelected;
-    console.log(this.isSelected);
-    
+    this.selectedTag.emit(this.text);
   }
 }

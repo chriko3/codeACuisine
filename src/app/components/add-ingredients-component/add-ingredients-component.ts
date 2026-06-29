@@ -13,7 +13,7 @@ export class AddIngredientsComponent {
   @Output() ingredient = new EventEmitter<string>();
   @Output() amount = new EventEmitter<string>();
   @Output() selected = new EventEmitter<string>();
-  @Output() clicked = new EventEmitter<void>();  
+  @Output() clicked = new EventEmitter<void>();
 
   onIngredientInput(value: string) {
     this.ingredient.emit(value);
@@ -27,7 +27,7 @@ export class AddIngredientsComponent {
     this.selected.emit(value);
   }
 
-  onClick(){
+  onClick() {
     this.clicked.emit();
   }
 }

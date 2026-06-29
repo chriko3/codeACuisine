@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-minus-plus-component',
@@ -7,5 +7,11 @@ import { Component, Input } from '@angular/core';
   styleUrl: './minus-plus-component.scss',
 })
 export class MinusPlusComponent {
-  @Input() minusOrPlus: 'minus' | 'plus' = 'minus'
+  @Input() minusOrPlus: 'minus' | 'plus' = 'minus';
+
+  @Output() clicked = new EventEmitter<void>();
+
+  onClick() {
+    this.clicked.emit();
+  }
 }
