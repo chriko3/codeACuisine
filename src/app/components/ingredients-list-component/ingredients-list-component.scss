@@ -1,6 +1,8 @@
 section {
   min-height: 176px;
+  max-height: 500px;
   width: 577px;
+  overflow-y: auto;
   background-color: rgba(57, 96, 57, 0.3);
   border-radius: 20px;
   padding: 25px 33px;
@@ -10,11 +12,60 @@ section {
   color: rgba(16, 49, 11, 1);
   font-weight: 700;
 
-  p{
+  p {
     margin: 0px;
   }
 }
 
-.container{
-
+.container {
 }
+
+.ingredients {
+  display: flex;
+  align-items: start;
+}
+
+ul {
+  font-size: var(--font-size-18);
+  font-weight: 100;
+  padding-left: 0px;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  transition: background-color 0.15s ease-in;
+  border-radius: 8px;
+
+  div {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    box-sizing: border-box;
+    padding: 5px;
+  }
+  &:hover {
+    background-color: rgba(250, 240, 230, 1);
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #10310b;
+  border-radius: 10px;
+}
+
+

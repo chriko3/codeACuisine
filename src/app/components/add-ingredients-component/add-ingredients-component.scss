@@ -10,6 +10,10 @@ section {
   font-size: var(--font-size-16);
   color: rgba(16, 49, 11, 1);
   font-weight: 700;
+
+  p {
+    margin-top: 0px;
+  }
 }
 
 .container {

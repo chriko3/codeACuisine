@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-edit-delete-component',
@@ -8,9 +8,11 @@ import { Component, Input } from '@angular/core';
 })
 export class EditDeleteComponent {
   @Input() editOrDelete: 'edit' | 'delete' = 'edit'
+  @Output() clicked = new EventEmitter<void>();
   selected = false;
 
   toggle(){
     this.selected = !this.selected;
+    this.clicked.emit();
   }
 }

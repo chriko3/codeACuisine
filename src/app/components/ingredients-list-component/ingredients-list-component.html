@@ -1,5 +1,24 @@
 <section>
-    <div class="container">
-        <p>List of your Ingredients</p>
-    </div>
+  <div class="container">
+    <p>List of your Ingredients</p>
+
+    <div class="ingredients"></div>
+    <ul>
+      @for (ingredient of ingredientList.slice().reverse(); track $index) {
+        <li>
+          <div>
+            <span>{{ ingredient.amount }}{{ ingredient.type | measurementPipe }}</span
+            ><span>{{ ingredient.ingredient }}</span>
+          </div>
+          <div class="actions">
+            <app-edit-delete-component></app-edit-delete-component>
+            <app-edit-delete-component
+              [editOrDelete]="'delete'"
+              (clicked)="deleteIngredient($index)"
+            ></app-edit-delete-component>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
 </section>

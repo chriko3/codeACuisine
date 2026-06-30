@@ -38,14 +38,17 @@ export class GenerateRecipePage {
   }
 
   addToIngredientsList() {
-    if (this.ingredient != '' || this.amount != '') {
-      this.ingredientList.push({
-        ingredient: this.ingredient,
-        amount: this.amount,
-        type: this.type,
-      });
-      this.ingredient = '';
-      this.amount = '';
+    if (this.ingredient != '' && this.amount != '') {
+      this.ingredientList = [
+        ...this.ingredientList,
+        {
+          ingredient: this.ingredient,
+          amount: this.amount,
+          type: this.type,
+        },
+      ];
+      // this.ingredient = '';
+      // this.amount = '';
       console.log(this.ingredientList);
     }
   }
