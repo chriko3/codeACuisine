@@ -14,7 +14,9 @@ section {
 }
 
 svg {
-  cursor: pointer;
+  cursor:
+    url('/assets/img/cursor_hand.png') 0 0,
+    pointer;
   outline: none;
 }
 
@@ -27,7 +29,9 @@ svg {
   font-family: var(--font-quicksand);
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-500);
-  cursor: pointer;
+  cursor:
+    url('/assets/img/cursor_hand.png') 0 0,
+    pointer;
   p {
     margin: 0px;
   }

@@ -35,13 +35,17 @@
 }
 
 .input {
-  display:flex;
+  display: flex;
   align-items: start;
   justify-content: center;
   gap: 32px;
 }
 
-.bottom{
-  display:flex;
+.bottom {
+  display: flex;
   justify-content: end;
+}
+
+.display-none {
+  display: none;
 }

@@ -18,9 +18,10 @@
 
         <app-ingredients-list-component
           [ingredientList]="ingredientList"
+          (delete)="deleteIngredient($event)"
         ></app-ingredients-list-component>
       </div>
-      <div class="bottom">
+      <div class="bottom" [class.display-none]="!enoughtIngredients">
         <app-primary-button-component
           [text]="'Next step'"
           routerLink="/preferences"

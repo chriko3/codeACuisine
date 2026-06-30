@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { MenuBarComponent } from '../../components/menu-bar-component/menu-bar-component';
 import { AddIngredientsComponent } from '../../components/add-ingredients-component/add-ingredients-component';
 import { IngredientsListComponent } from '../../components/ingredients-list-component/ingredients-list-component';
@@ -19,11 +19,14 @@ import { IngredientInterface } from '../../services/ingredient-interface';
   styleUrl: './generate-recipe-page.scss',
 })
 export class GenerateRecipePage {
+  constructor(private cdr: ChangeDetectorRef) {}
   ingredient = '';
   amount = '';
   type = 'gram';
 
   ingredientList: IngredientInterface[] = [];
+
+  enoughtIngredients = false;
 
   onIngredientChange(value: string) {
     this.ingredient = value;
@@ -50,6 +53,21 @@ export class GenerateRecipePage {
       // this.ingredient = '';
       // this.amount = '';
       console.log(this.ingredientList);
+      this.checkIfEnoughtIngredients();
+    }
+  }
+
+  deleteIngredient(index: number) {
+    this.ingredientList.splice(index, 1);
+    this.ingredientList = [...this.ingredientList];
+    this.checkIfEnoughtIngredients();
+  }
+
+  checkIfEnoughtIngredients() {
+    if (this.ingredientList.length >= 3) {
+      this.enoughtIngredients = true;
+    } else {
+      this.enoughtIngredients = false;
     }
   }
 }
