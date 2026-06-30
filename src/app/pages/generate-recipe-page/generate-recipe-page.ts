@@ -1,10 +1,11 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { MenuBarComponent } from '../../components/menu-bar-component/menu-bar-component';
 import { AddIngredientsComponent } from '../../components/add-ingredients-component/add-ingredients-component';
 import { IngredientsListComponent } from '../../components/ingredients-list-component/ingredients-list-component';
 import { PrimaryButtonComponent } from '../../components/primary-button-component/primary-button-component';
 import { RouterLink } from '@angular/router';
 import { IngredientInterface } from '../../services/ingredient-interface';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-generate-recipe-page',
@@ -19,7 +20,9 @@ import { IngredientInterface } from '../../services/ingredient-interface';
   styleUrl: './generate-recipe-page.scss',
 })
 export class GenerateRecipePage {
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private http: HttpClient,
+  ) {}
   ingredient = '';
   amount = '';
   type = 'gram';
@@ -69,5 +72,15 @@ export class GenerateRecipePage {
     } else {
       this.enoughtIngredients = false;
     }
+  }
+
+  sendIngriedentList() {
+    this.http
+      .post('http://localhost:5678/webhook-test/ingredients', {
+        ingredientList: this.ingredientList,
+      })
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 }

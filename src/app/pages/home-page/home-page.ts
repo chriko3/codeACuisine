@@ -10,4 +10,6 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })
-export class HomePage {}
+export class HomePage {
+
+}

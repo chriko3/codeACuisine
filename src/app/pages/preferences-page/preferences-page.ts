@@ -6,6 +6,7 @@ import { PaginationComponent } from '../../components/pagination-component/pagin
 import { TagButtonComponent } from '../../components/tag-button-component/tag-button-component';
 import { PrimaryButtonComponent } from '../../components/primary-button-component/primary-button-component';
 import { PreferencesInterface } from '../../services/preferences-interface';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-preferences-page',
@@ -28,7 +29,10 @@ export class PreferencesPage {
   activeTagDietPreferences = '';
 
   allPreferences: PreferencesInterface[] = [];
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+  ) {}
 
   increase(portionsOrPersons: 'portions' | 'persons') {
     if (portionsOrPersons == 'persons') {
@@ -74,8 +78,19 @@ export class PreferencesPage {
         cuisine: this.activeTagCuisine,
         dietPreferences: this.activeTagDietPreferences,
       });
+      this.sendPreferencesList();
       this.router.navigate(['\loading']);
       console.log(this.allPreferences);
     }
+  }
+
+  sendPreferencesList() {
+    this.http
+      .post('http://localhost:5678/webhook-test/preferences', {
+        ingredientList: this.allPreferences,
+      })
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 }
