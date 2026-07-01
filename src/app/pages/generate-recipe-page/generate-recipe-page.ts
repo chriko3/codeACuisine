@@ -76,7 +76,7 @@ export class GenerateRecipePage {
 
   sendIngriedentList() {
     this.http
-      .post('http://localhost:5678/webhook-test/ingredients', {
+      .post('http://localhost:5678/webhook/ingredients', {
         ingredientList: this.ingredientList,
       })
       .subscribe((res) => {

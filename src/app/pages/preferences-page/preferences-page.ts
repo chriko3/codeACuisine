@@ -34,6 +34,7 @@ export class PreferencesPage {
     private http: HttpClient,
   ) {}
 
+
   increase(portionsOrPersons: 'portions' | 'persons') {
     if (portionsOrPersons == 'persons') {
       if (this[portionsOrPersons] < 4) {
@@ -86,8 +87,8 @@ export class PreferencesPage {
 
   sendPreferencesList() {
     this.http
-      .post('http://localhost:5678/webhook-test/preferences', {
-        ingredientList: this.allPreferences,
+      .post('http://localhost:5678/webhook/preferences', {
+        allPreferences: this.allPreferences,
       })
       .subscribe((res) => {
         console.log(res);
