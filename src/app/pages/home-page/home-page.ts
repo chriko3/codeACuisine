@@ -11,5 +11,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home-page.scss',
 })
 export class HomePage {
-
+  deleteSessionStorage() {
+    sessionStorage.clear();
+  }
 }

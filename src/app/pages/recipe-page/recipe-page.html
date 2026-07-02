@@ -24,25 +24,28 @@
                 />
               </svg>
 
-              <p>Cooking time: XXmin</p>
+              <p>Cooking time: {{ recipes[recipeNumber].time | timeFormat }}</p>
             </div>
             <div class="title">
-              <p>Pasta with spinach and cherry tommatoes</p>
+              <p>{{ recipes[recipeNumber].name }}</p>
             </div>
             <div class="person">
-              <p>Coocking person: X</p>
-              <app-chef-label-component [chef]="0"></app-chef-label-component>
-              <app-chef-label-component [chef]="1"></app-chef-label-component>
-              <app-chef-label-component [chef]="2"></app-chef-label-component>
-              <app-chef-label-component [chef]="3"></app-chef-label-component>
+              <p>Coocking person: {{ recipes[recipeNumber].persons }}</p>
+              @for (item of getArray(recipes[recipeNumber].persons); track $index) {
+                <app-chef-label-component [chef]="$index"></app-chef-label-component>
+              }
             </div>
           </div>
         </div>
 
         <div class="right-head">
           <div class="all-tags">
-            <div class="tag"><p>Tag 1</p></div>
-            <div class="tag"><p>Tag 2</p></div>
+            <div class="tag">
+              <p>{{ recipes[recipeNumber].dietpreferences }}</p>
+            </div>
+            <div class="tag">
+              <p>{{ recipes[recipeNumber].cookingTime }}</p>
+            </div>
             <div class="tag">
               <svg
                 width="20"
@@ -56,31 +59,31 @@
                   fill="#10310B"
                 />
               </svg>
-              <p>66</p>
+              <p>XX</p>
             </div>
           </div>
           <div class="infos">
-            <p>Nutritional information</p>
+            <p>Nutritional information per serving</p>
 
             <div class="facts">
               <div class="fact">
                 <p>Energie</p>
-                <p>XXXX kcal</p>
+                <p>{{ recipes[recipeNumber].energie }}kcal</p>
               </div>
 
               <div class="fact">
                 <p>Protein</p>
-                <p>XXg</p>
+                <p>{{ recipes[recipeNumber].protein }}g</p>
               </div>
 
               <div class="fact">
                 <p>Fat</p>
-                <p>XXg</p>
+                <p>{{ recipes[recipeNumber].fat }}g</p>
               </div>
 
               <div class="fact">
                 <p>Carbs</p>
-                <p>XXg</p>
+                <p>{{ recipes[recipeNumber].carbs }}g</p>
               </div>
             </div>
           </div>
@@ -93,20 +96,23 @@
           <div class="ingredients-col">
             <p>Your ingredients</p>
             <ul>
-              <li><span class="amount">XXg</span><span class="text">Pasta noodles</span></li>
-              <li><span class="amount">XXXg</span><span class="text">Pasta</span></li>
-              <li><span class="amount">1 piece</span><span class="text">Pasta</span></li>
-              <li><span class="amount">XXg</span><span class="text">Pasta noodles</span></li>
-              <li><span class="amount">XXXg</span><span class="text">Pasta</span></li>
-              <li><span class="amount">1 piece</span><span class="text">Pasta</span></li>
+              @for (item of recipes[recipeNumber].yourIngredients; track $index) {
+                <li>
+                  <span class="amount">{{ item.amount }}{{ item.type | measurementPipe}}</span>
+                  <span class="text">{{ item.product }}</span>
+                </li>
+              }
             </ul>
           </div>
           <div class="ingredients-col">
             <p>Extra ingredients</p>
             <ul>
-              <li><span class="amount">XXg</span><span class="text">Pasta noodles</span></li>
-              <li><span class="amount">XXXg</span><span class="text">Pasta</span></li>
-              <li><span class="amount">1 piece</span><span class="text">Pasta</span></li>
+             @for (item of recipes[recipeNumber].extraIngredients; track $index) {
+                <li>
+                  <span class="amount">{{ item.amount }}{{ item.type | measurementPipe}}</span>
+                  <span class="text">{{ item.product }}</span>
+                </li>
+              }
             </ul>
           </div>
         </div>

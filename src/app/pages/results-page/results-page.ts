@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { MenuBarComponent } from '../../components/menu-bar-component/menu-bar-component';
 import { TagButtonComponent } from '../../components/tag-button-component/tag-button-component';
 import { RecipeCardResultsComponent } from '../../components/recipe-card-results-component/recipe-card-results-component';
-import { RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-results-page',
@@ -12,16 +11,16 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './results-page.scss',
 })
 export class ResultsPage {
-  constructor(private http: HttpClient) {}
-  recipe: any = null;
+  constructor(private router: Router) {}
+  sStorage = sessionStorage.getItem('kiRecipes');
+  recipes: any[] = [];
   ngOnInit() {
-    this.http
-      .post('http://localhost:5678/webhook/preferences', {
-        prompt: 'make recipe',
-      })
-      .subscribe((res: any) => {
-        console.log(res);
-        this.recipe = res;
-      });
+    if (this.sStorage) {
+      this.recipes = JSON.parse(this.sStorage).recipes;
+    }
+  }
+
+  openRecipe(index: number) {
+    this.router.navigate(['/recipe', index]);
   }
 }

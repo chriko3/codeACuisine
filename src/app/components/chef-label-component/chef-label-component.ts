@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './chef-label-component.scss',
 })
 export class ChefLabelComponent {
-  @Input() chef: 0| 1 | 2 | 3 = 0;
+  @Input() chef = 0;
   chefAmount: number[] = [1,2,3,4];
 
   ngOnInit() {

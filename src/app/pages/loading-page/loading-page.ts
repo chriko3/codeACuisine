@@ -1,6 +1,6 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { MenuBarComponent } from '../../components/menu-bar-component/menu-bar-component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-loading-page',
@@ -9,7 +9,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './loading-page.scss',
 })
 export class LoadingPage {
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private router: Router,
+  ) {}
   displayLoadingText = '';
   loadingText = [
     'Chopping ingredients 🔪',
@@ -20,16 +23,25 @@ export class LoadingPage {
     'Adding a pinch of magic ✨',
   ];
   index = 0;
+  interval: any;
 
   ngOnInit() {
     this.displayLoadingText = this.loadingText[this.index];
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.index++;
       if (this.index >= this.loadingText.length) {
         this.index = 0;
       }
       this.displayLoadingText = this.loadingText[this.index];
+      const sStorage = sessionStorage.getItem('kiRecipes');
+      if (sStorage) {
+        this.router.navigate(['/results']);
+      }
       this.cdr.detectChanges();
     }, 2600);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.interval);
   }
 }

@@ -1,6 +1,6 @@
 <div>
-  <button (click)="toggle()" [class.toggle]="isSelected">
+  <button (click)="toggle()" [class.toggle]="isSelected" [class.clickable]="!clickable">
     <p>{{ text }}</p>
   </button>
-  <p>{{optionalText}}</p>
+  <p>{{ optionalText }}</p>
 </div>

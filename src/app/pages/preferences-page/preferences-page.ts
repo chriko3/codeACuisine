@@ -28,12 +28,20 @@ export class PreferencesPage {
   activeTagCuisine = '';
   activeTagDietPreferences = '';
 
+  recipes: any[] | null = null;
+
   allPreferences: PreferencesInterface[] = [];
   constructor(
     private router: Router,
     private http: HttpClient,
   ) {}
 
+  ngOnInit() {
+    const sStorage = sessionStorage.getItem('kiRecipes');
+    if (sStorage) {
+      this.recipes = JSON.parse(sStorage);
+    }
+  }
 
   increase(portionsOrPersons: 'portions' | 'persons') {
     if (portionsOrPersons == 'persons') {
@@ -87,11 +95,15 @@ export class PreferencesPage {
 
   sendPreferencesList() {
     this.http
-      .post('http://localhost:5678/webhook/preferences', {
+      .post<any[]>('http://localhost:5678/webhook/preferences', {
         allPreferences: this.allPreferences,
       })
-      .subscribe((res) => {
-        console.log(res);
+      .subscribe({
+        next: (res) => {
+          sessionStorage.setItem('kiRecipes', JSON.stringify(res));
+          console.log(res);
+          this.recipes = res;
+        },
       });
   }
 }

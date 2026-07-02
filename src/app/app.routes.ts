@@ -14,7 +14,7 @@ export const routes: Routes = [
   { path: 'preferences', component: PreferencesPage },
   { path: 'loading', component: LoadingPage },
   { path: 'results', component: ResultsPage },
-  { path: 'recipe', component: RecipePage },
+  { path: 'recipe/:id', component: RecipePage },
   { path: 'cookbook', component: CookbookPage },
   { path: 'recipes/:id', component: CatRecipePage },
 ];

@@ -10,9 +10,18 @@
           right now!
         </p>
         <div class="tags">
-          <app-tag-button-component [text]="''"></app-tag-button-component>
-          <app-tag-button-component [text]="''"></app-tag-button-component>
-          <app-tag-button-component [text]="''"></app-tag-button-component>
+          <app-tag-button-component
+            [text]="recipes[0].dietpreferences"
+            [clickable]="false"
+          ></app-tag-button-component>
+          <app-tag-button-component
+            [text]="recipes[0].cookingTime"
+            [clickable]="false"
+          ></app-tag-button-component>
+          <app-tag-button-component
+            [text]="'Portions: ' + recipes[0].portions"
+            [clickable]="false"
+          ></app-tag-button-component>
         </div>
       </div>
 
@@ -22,14 +31,14 @@
     </div>
 
     <div class="list">
-      <app-recipe-card-results-component
-        [number]="1"
-        [title]="'title'"
-        [timeInMin]="12"
-        routerLink="/recipe"
-      ></app-recipe-card-results-component>
-      <app-recipe-card-results-component></app-recipe-card-results-component>
-      <app-recipe-card-results-component></app-recipe-card-results-component>
+      @for (item of recipes; track $index) {
+        <app-recipe-card-results-component
+          [number]="$index + 1"
+          [title]="recipes[$index].name"
+          [timeInMin]="recipes[$index].time"
+          (clicked)="openRecipe($index + 1)"
+        ></app-recipe-card-results-component>
+      }
     </div>
   </div>
 </div>

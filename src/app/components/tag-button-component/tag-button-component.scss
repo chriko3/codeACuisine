@@ -22,6 +22,7 @@ button {
   color: rgba(30, 85, 21, 1);
   background-color: rgba(250, 240, 230, 1);
   transition: background-color 0.15s ease-in;
+  padding: 0px 10px;
 
   &:hover {
     background-color: rgba(250, 224, 198, 1);
@@ -33,4 +34,8 @@ button {
   p {
     color: rgba(16, 49, 11, 1);
   }
+}
+
+.clickable{
+  cursor: default !important;
 }
