@@ -98,7 +98,7 @@
             <ul>
               @for (item of recipes[recipeNumber].yourIngredients; track $index) {
                 <li>
-                  <span class="amount">{{ item.amount }}{{ item.type | measurementPipe}}</span>
+                  <span class="amount">{{ item.amount }}{{ item.type | measurementPipe }}</span>
                   <span class="text">{{ item.product }}</span>
                 </li>
               }
@@ -107,9 +107,9 @@
           <div class="ingredients-col">
             <p>Extra ingredients</p>
             <ul>
-             @for (item of recipes[recipeNumber].extraIngredients; track $index) {
+              @for (item of recipes[recipeNumber].extraIngredients; track $index) {
                 <li>
-                  <span class="amount">{{ item.amount }}{{ item.type | measurementPipe}}</span>
+                  <span class="amount">{{ item.amount }}{{ item.type | measurementPipe }}</span>
                   <span class="text">{{ item.product }}</span>
                 </li>
               }
@@ -120,6 +120,26 @@
 
       <div class="directions">
         <app-single-cuisine-component [title]="'Directions'"></app-single-cuisine-component>
+
+        <div class="steps-all">
+          @for (item of recipes[recipeNumber].directions; track $index) {
+            <div class="step">
+              <div class="step-wrapper">
+                <div class="step-head">
+                  <div class="step-number">
+                    <p>{{ $index + 1 }}.</p>
+                  </div>
+                  <p>{{ item.title }}</p>
+                </div>
+                <app-chef-label-component [chef]="item.chef - 1"></app-chef-label-component>
+              </div>
+
+              <div class="step-text">
+                <p>{{item.task}}</p>
+              </div>
+            </div>
+          }
+        </div>
       </div>
     </div>
 

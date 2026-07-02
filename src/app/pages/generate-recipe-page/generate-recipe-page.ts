@@ -53,8 +53,8 @@ export class GenerateRecipePage {
           type: this.type,
         },
       ];
-      // this.ingredient = '';
-      // this.amount = '';
+      this.ingredient = '';
+      this.amount = '';
       console.log(this.ingredientList);
       this.checkIfEnoughtIngredients();
     }

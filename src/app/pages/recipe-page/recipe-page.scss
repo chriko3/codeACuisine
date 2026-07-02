@@ -160,6 +160,57 @@
   height: auto;
 }
 
+.steps-all {
+  margin-top: 40px;
+  box-sizing: border-box;
+  padding: 0px 300px;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.step {
+  width: 400px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  color: rgba(16, 49, 11, 1);
+}
+
+.step-wrapper {
+  display: flex;
+  align-items: center;
+
+  app-chef-label-component {
+    margin-left: auto;
+  }
+}
+
+.step-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-quicksand);
+  font-size: var(--font-size-24);
+}
+
+.step-number {
+  background-color: rgba(250, 240, 230, 1);
+  border-radius: 30px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-18) !important;
+}
+
+.step-text{
+  font-size: var(--font-size-18);
+  margin-top: 10px;
+}
+
 .cookbook {
   height: 140px;
   background-color: rgba(57, 96, 57, 0.1);
