@@ -23,9 +23,24 @@ export class ResultsPage {
     if (this.sStorage) {
       this.recipes = JSON.parse(this.sStorage).recipes;
     }
-    const allRecipes = this.recipes[0].recipes;
 
-   
+    for (let index = 0; index < this.recipes.length; index++) {
+      this.supabaseService.saveRecipes(
+        this.recipes[index].name,
+        this.recipes[index].time,
+        this.recipes[index].persons,
+        this.recipes[index].cuisine,
+        this.recipes[index].dietpreferences,
+        this.recipes[index].cookingTime,
+        this.recipes[index].energie,
+        this.recipes[index].protein,
+        this.recipes[index].fat,
+        this.recipes[index].carbs,
+        this.recipes[index].yourIngredients,
+        this.recipes[index].extraIngredients,
+        this.recipes[index].directions,
+      );
+    }
   }
 
   openRecipe(index: number) {

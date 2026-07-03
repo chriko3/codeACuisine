@@ -9,8 +9,9 @@ import { EditDeleteComponent } from '../edit-delete-component/edit-delete-compon
   styleUrl: './single-recipe-cookbook-component.scss',
 })
 export class SingleRecipeCookbookComponent {
-  @Input() timeInMin = 0;
   @Input() number = 0;
+  @Input() title?: "";
+  @Input() timeInMin = 0;
   @Input() time: 'Quick' | 'Medium' | 'Complex' = 'Quick';
   @Input() cuisine: 'German' | 'Indian' | 'Italian' | 'Japanese' | 'Gourmet' | 'Fusion' =
     'Japanese';

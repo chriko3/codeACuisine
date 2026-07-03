@@ -14,23 +14,19 @@
       <app-single-cuisine-component [title]="capitalized"></app-single-cuisine-component>
 
       <div class="list">
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
-        <app-single-recipe-cookbook-component></app-single-recipe-cookbook-component>
+        @for (item of recipes; track $index) {
+          <app-single-recipe-cookbook-component
+            [number]="$index + 1"
+            [title]="recipes[$index].name"
+            [timeInMin]="recipes[$index].time"
+            [time]="recipes[$index].cookingTime"
+            [cuisine]="recipes[$index].cuisine"
+            [diet]="recipes[$index].dietPreferences"
+            [likes]="0"
+          ></app-single-recipe-cookbook-component>
+        }
       </div>
-      
+
       <div class="navigation">
         <p><</p>
         <p>></p>

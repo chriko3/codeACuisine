@@ -93,6 +93,12 @@
   justify-content: center;
 }
 
+.click {
+  cursor:
+    url('/assets/img/cursor_hand.png') 0 0,
+    pointer;
+}
+
 .infos {
   p:first-of-type {
     font-size: var(--font-size-18);
@@ -206,7 +212,7 @@
   font-size: var(--font-size-18) !important;
 }
 
-.step-text{
+.step-text {
   font-size: var(--font-size-18);
   margin-top: 10px;
 }
