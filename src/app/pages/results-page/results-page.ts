@@ -3,6 +3,7 @@ import { MenuBarComponent } from '../../components/menu-bar-component/menu-bar-c
 import { TagButtonComponent } from '../../components/tag-button-component/tag-button-component';
 import { RecipeCardResultsComponent } from '../../components/recipe-card-results-component/recipe-card-results-component';
 import { Router, RouterLink } from '@angular/router';
+import { SupabaseService } from '../../services/supabase-service';
 
 @Component({
   selector: 'app-results-page',
@@ -11,13 +12,20 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './results-page.scss',
 })
 export class ResultsPage {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private supabaseService: SupabaseService,
+  ) {}
+
   sStorage = sessionStorage.getItem('kiRecipes');
   recipes: any[] = [];
   ngOnInit() {
     if (this.sStorage) {
       this.recipes = JSON.parse(this.sStorage).recipes;
     }
+    const allRecipes = this.recipes[0].recipes;
+
+   
   }
 
   openRecipe(index: number) {

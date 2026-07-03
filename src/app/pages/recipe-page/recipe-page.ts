@@ -18,13 +18,15 @@ import { MeasurementPipe } from '../../services/measurement-pipe';
     PrimaryButtonComponent,
     SecondaryButtonComponent,
     TimeFormatPipe,
-    MeasurementPipe
+    MeasurementPipe,
   ],
   templateUrl: './recipe-page.html',
   styleUrl: './recipe-page.scss',
 })
 export class RecipePage {
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+  ) {}
 
   url = '';
   sStorage = sessionStorage.getItem('kiRecipes');
@@ -42,6 +44,6 @@ export class RecipePage {
   }
 
   getArray(n: number): number[] {
-  return Array(n).fill(0);
-}
+    return Array(n).fill(0);
+  }
 }
