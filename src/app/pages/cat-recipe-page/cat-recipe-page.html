@@ -15,15 +15,17 @@
 
       <div class="list">
         @for (item of recipes; track $index) {
-          <app-single-recipe-cookbook-component
-            [number]="$index + 1"
-            [title]="recipes[$index].name"
-            [timeInMin]="recipes[$index].time"
-            [time]="recipes[$index].cookingTime"
-            [cuisine]="recipes[$index].cuisine"
-            [diet]="recipes[$index].dietPreferences"
-            [likes]="0"
-          ></app-single-recipe-cookbook-component>
+          @if ($index < 15) {
+            <app-single-recipe-cookbook-component
+              [number]="$index + 1"
+              [title]="recipes[$index].name"
+              [timeInMin]="recipes[$index].time"
+              [time]="recipes[$index].cookingTime"
+              [cuisine]="recipes[$index].cuisine"
+              [diet]="recipes[$index].dietPreferences"
+              [likes]="0"
+            ></app-single-recipe-cookbook-component>
+          }
         }
       </div>
 
