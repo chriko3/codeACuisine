@@ -14,6 +14,9 @@
       <app-single-cuisine-component [title]="capitalized"></app-single-cuisine-component>
 
       <div class="list">
+        <div class="no-recipes" [class.display-none]="!loading">
+          <p>Loading recipes...</p>
+        </div>
         @for (item of recipes; track $index) {
           @if ($index < 15) {
             <app-single-recipe-cookbook-component
@@ -22,12 +25,13 @@
               [timeInMin]="recipes[$index].time"
               [time]="recipes[$index].cookingTime"
               [cuisine]="recipes[$index].cuisine"
-              [diet]="recipes[$index].dietPreferences"
+              [diet]="recipes[$index].dietpreferences"
               [likes]="0"
+              (click)="openRecipe(recipes[$index].id)"
             ></app-single-recipe-cookbook-component>
           }
         }
-        @if (recipes.length === 0) {
+        @if (noRecipes) {
           <div class="no-recipes">
             <app-secondary-button-component
               [text]="'Start generating recipes'"

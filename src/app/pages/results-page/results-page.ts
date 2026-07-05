@@ -22,31 +22,41 @@ export class ResultsPage {
   ngOnInit() {
     if (this.sStorage) {
       this.recipes = JSON.parse(this.sStorage).recipes;
-    }
-    else if(!this.sStorage){
+    } else if (!this.sStorage) {
       this.router.navigate(['/']);
     }
+    this.saveToDB();
+  }
 
-    for (let index = 0; index < this.recipes.length; index++) {
-      this.supabaseService.saveRecipes(
-        this.recipes[index].name,
-        this.recipes[index].time,
-        this.recipes[index].persons,
-        this.recipes[index].cuisine,
-        this.recipes[index].dietpreferences,
-        this.recipes[index].cookingTime,
-        this.recipes[index].energie,
-        this.recipes[index].protein,
-        this.recipes[index].fat,
-        this.recipes[index].carbs,
-        this.recipes[index].yourIngredients,
-        this.recipes[index].extraIngredients,
-        this.recipes[index].directions,
-      );
-    }
+  saveToDB() {
+    this.supabaseService.getRecipesByName(this.recipes[0].name).then((data) => {
+      if (!data || data.length === 0) {
+        for (let index = 0; index < this.recipes.length; index++) {
+          this.supabaseService.saveRecipes(
+            this.recipes[index].name,
+            this.recipes[index].time,
+            this.recipes[index].persons,
+            this.recipes[index].cuisine,
+            this.recipes[index].dietpreferences,
+            this.recipes[index].cookingTime,
+            this.recipes[index].energie,
+            this.recipes[index].protein,
+            this.recipes[index].fat,
+            this.recipes[index].carbs,
+            this.recipes[index].yourIngredients,
+            this.recipes[index].extraIngredients,
+            this.recipes[index].directions,
+          );
+        }
+      }
+    });
   }
 
   openRecipe(index: number) {
-    this.router.navigate(['/recipe', index]);
+    this.router.navigate(['/recipe', index], {
+      queryParams: {
+        source: 'generating',
+      },
+    });
   }
 }

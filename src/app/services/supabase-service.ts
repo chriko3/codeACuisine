@@ -15,7 +15,7 @@ export class SupabaseService {
     time: number,
     persons: number,
     cuisine: string,
-    dietPreferences: string,
+    dietpreferences: string,
     cookingTime: number,
     energie: number,
     protein: number,
@@ -32,7 +32,7 @@ export class SupabaseService {
         time: time,
         persons: persons,
         cuisine: cuisine,
-        dietPreferences: dietPreferences,
+        dietpreferences: dietpreferences,
         cookingTime: cookingTime,
         energie: energie,
         protein: protein,
@@ -45,8 +45,19 @@ export class SupabaseService {
       .select();
     return data;
   }
+
   async getRecipesByCuisine(cuisine: string) {
     let { data } = await this.supabase.from('recipes').select('*').eq('cuisine', cuisine);
+    return data;
+  }
+
+  async getRecipesById(id: number) {
+    let { data } = await this.supabase.from('recipes').select('*').eq('id', id);
+    return data;
+  }
+
+  async getRecipesByName(name: string) {
+    let { data } = await this.supabase.from('recipes').select('*').eq('name', name);
     return data;
   }
 }
