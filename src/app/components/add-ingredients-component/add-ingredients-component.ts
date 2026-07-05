@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component,Input, Output, EventEmitter } from '@angular/core';
 import { InputFieldComponent } from '../input-field-component/input-field-component';
 import { MeasurementsComponent } from '../measurements-component/measurements-component';
 import { AddComponent } from '../add-component/add-component';
@@ -10,6 +10,8 @@ import { AddComponent } from '../add-component/add-component';
   styleUrl: './add-ingredients-component.scss',
 })
 export class AddIngredientsComponent {
+  @Input() suggestion: string | undefined;
+
   @Output() ingredient = new EventEmitter<string>();
   @Output() amount = new EventEmitter<string>();
   @Output() selected = new EventEmitter<string>();

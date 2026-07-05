@@ -10,6 +10,7 @@
 
       <div class="input">
         <app-add-ingredients-component
+          [suggestion]="suggestion"
           (ingredient)="onIngredientChange($event)"
           (amount)="onAmountChange($event)"
           (selected)="onSelectedChange($event)"

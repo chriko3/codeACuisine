@@ -6,6 +6,7 @@ import { PrimaryButtonComponent } from '../../components/primary-button-componen
 import { RouterLink } from '@angular/router';
 import { IngredientInterface } from '../../services/ingredient-interface';
 import { HttpClient } from '@angular/common/http';
+import { WordSuggestionService } from '../../services/word-suggestion-service';
 
 @Component({
   selector: 'app-generate-recipe-page',
@@ -20,10 +21,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './generate-recipe-page.scss',
 })
 export class GenerateRecipePage {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private wordSuggestionService: WordSuggestionService,
+  ) {}
   ingredient = '';
   amount = '';
   type = 'gram';
+  suggestion: string | undefined;
 
   ingredientList: IngredientInterface[] = [];
 
@@ -35,6 +40,7 @@ export class GenerateRecipePage {
 
   onIngredientChange(value: string) {
     this.ingredient = value;
+    this.suggestion = this.wordSuggestionService.searchWord(this.ingredient);
   }
 
   onAmountChange(value: string) {

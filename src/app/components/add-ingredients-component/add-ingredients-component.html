@@ -5,11 +5,9 @@
       <app-input-field-component
         (inputTextSend)="onIngredientInput($event)"
       ></app-input-field-component>
-      <!-- <div class="results">
-        <p>Pasta</p>
-        <p>Pastrami</p>
-        <p>Passionsfrut</p>
-      </div> -->
+      <div class="results">
+        <p>{{suggestion}}</p>
+      </div>
     </div>
     <div class="right">
       <p>Serving size</p>
