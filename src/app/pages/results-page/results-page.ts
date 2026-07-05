@@ -23,6 +23,9 @@ export class ResultsPage {
     if (this.sStorage) {
       this.recipes = JSON.parse(this.sStorage).recipes;
     }
+    else if(!this.sStorage){
+      this.router.navigate(['/']);
+    }
 
     for (let index = 0; index < this.recipes.length; index++) {
       this.supabaseService.saveRecipes(
