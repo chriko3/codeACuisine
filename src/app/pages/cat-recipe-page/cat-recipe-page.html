@@ -27,11 +27,22 @@
             ></app-single-recipe-cookbook-component>
           }
         }
+        @if (recipes.length === 0) {
+          <div class="no-recipes">
+            <app-secondary-button-component
+              [text]="'Start generating recipes'"
+              routerLink="/generate-recipe"
+            ></app-secondary-button-component>
+          </div>
+        }
       </div>
 
       <div class="navigation">
-        <p><</p>
-        <p>></p>
+        @for (item of getArray(recipes.length / 15); track $index) {
+          <p>
+            {{ $index + 1 }}
+          </p>
+        }
       </div>
     </div>
   </div>

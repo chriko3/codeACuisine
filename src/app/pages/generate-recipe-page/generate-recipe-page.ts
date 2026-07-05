@@ -20,9 +20,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './generate-recipe-page.scss',
 })
 export class GenerateRecipePage {
-  constructor(
-    private http: HttpClient,
-  ) {}
+  constructor(private http: HttpClient) {}
   ingredient = '';
   amount = '';
   type = 'gram';
@@ -30,6 +28,10 @@ export class GenerateRecipePage {
   ingredientList: IngredientInterface[] = [];
 
   enoughtIngredients = false;
+
+  ngOnInit() {
+    this.deleteSessionStorage();
+  }
 
   onIngredientChange(value: string) {
     this.ingredient = value;
@@ -41,6 +43,10 @@ export class GenerateRecipePage {
 
   onSelectedChange(value: string) {
     this.type = value;
+  }
+
+  deleteSessionStorage() {
+    sessionStorage.clear();
   }
 
   addToIngredientsList() {

@@ -27,10 +27,35 @@
   gap: 8px;
 }
 
-.navigation{
+.navigation {
   margin-top: 68px;
   padding-bottom: 68px;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  gap: 4px;
+
+  p {
+    min-width: 15px;
+    font-size: var(--font-size-20);
+    padding: 4px;
+    transition: background-color 0.15s ease-in;
+    border-radius: 4px;
+    cursor:
+      url('/assets/img/cursor_hand.png') 0 0,
+      pointer;
+
+    &:hover {
+      background-color: rgba(250, 240, 230, 0.7);
+    }
+  }
+}
+
+.no-recipes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
 }

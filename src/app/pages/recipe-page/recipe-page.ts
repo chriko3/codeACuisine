@@ -24,9 +24,7 @@ import { MeasurementPipe } from '../../services/measurement-pipe';
   styleUrl: './recipe-page.scss',
 })
 export class RecipePage {
-  constructor(
-    private route: ActivatedRoute,
-  ) {}
+  constructor(private route: ActivatedRoute) {}
 
   url = '';
   sStorage = sessionStorage.getItem('kiRecipes');

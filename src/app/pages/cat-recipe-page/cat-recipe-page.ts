@@ -6,6 +6,8 @@ import { PrimaryButtonComponent } from '../../components/primary-button-componen
 import { SingleCuisineComponent } from '../../components/single-cuisine-component/single-cuisine-component';
 import { SingleRecipeCookbookComponent } from '../../components/single-recipe-cookbook-component/single-recipe-cookbook-component';
 import { SupabaseService } from '../../services/supabase-service';
+import { SecondaryButtonComponent } from '../../components/secondary-button-component/secondary-button-component';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-cat-recipe-page',
@@ -15,6 +17,7 @@ import { SupabaseService } from '../../services/supabase-service';
     PrimaryButtonComponent,
     SingleCuisineComponent,
     SingleRecipeCookbookComponent,
+    SecondaryButtonComponent,
   ],
   templateUrl: './cat-recipe-page.html',
   styleUrl: './cat-recipe-page.scss',
@@ -38,5 +41,9 @@ export class CatRecipePage {
       console.log(data);
       this.cdr.detectChanges();
     });
+  }
+
+  getArray(n: number): number[] {
+    return Array(Math.round(n)).fill(0);
   }
 }
