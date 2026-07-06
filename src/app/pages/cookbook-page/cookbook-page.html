@@ -17,7 +17,7 @@
 
       <div class="right">
         <div class="title">
-          <p>Most liked recipes</p>
+          <p>Recently generated recipes</p>
           <svg
             width="20"
             height="20"
@@ -32,8 +32,13 @@
           </svg>
         </div>
         <div class="most-liked-recipes">
-          <app-most-liked-recipes-component></app-most-liked-recipes-component>
-          <app-most-liked-recipes-component></app-most-liked-recipes-component>
+          @for (item of recipes; track $index) {
+            <app-most-liked-recipes-component
+              [title]="recipes[$index].name"
+              [timeInMin]="recipes[$index].time"
+              [likes]="recipes[$index].likes"
+            ></app-most-liked-recipes-component>
+          }
         </div>
       </div>
     </div>

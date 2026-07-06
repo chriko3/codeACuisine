@@ -8,7 +8,6 @@ import { SecondaryButtonComponent } from '../../components/secondary-button-comp
 import { TimeFormatPipe } from '../../services/time-format-pipe';
 import { MeasurementPipe } from '../../services/measurement-pipe';
 import { SupabaseService } from '../../services/supabase-service';
-import { getLocaleMonthNames } from '@angular/common';
 
 @Component({
   selector: 'app-recipe-page',
@@ -37,6 +36,8 @@ export class RecipePage {
   sStorage = sessionStorage.getItem('kiRecipes');
   recipes: any[] = [];
   recipeNumber = 0;
+  likes = 0;
+  loading = true;
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.recipeNumber = Number(params.get('id')) - 1;
@@ -54,14 +55,24 @@ export class RecipePage {
       if (this.sStorage) {
         this.recipes = JSON.parse(this.sStorage).recipes;
         this.cdr.detectChanges();
+        this.loading = false;
       }
     } else if (this.source == 'db') {
       this.supabaseService.getRecipesById(this.recipeNumber + 1).then((data) => {
         this.recipes = data ?? [];
         this.recipeNumber = 0;
+        this.loading = false;
+        this.cdr.detectChanges();
+      });
+      this.supabaseService.subscribeToRecipesByIdGetLikes(this.recipeNumber + 1, (likes) => {
+        this.recipes[this.recipeNumber].likes = likes;
         this.cdr.detectChanges();
       });
     }
+  }
+
+  ngOnDestroy(){
+    this.supabaseService.unsubscribeRecipes();
   }
 
   getArray(n: number): number[] {

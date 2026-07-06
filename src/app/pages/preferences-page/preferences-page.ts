@@ -85,7 +85,7 @@ export class PreferencesPage {
         persons: this.persons,
         cookingTime: this.activeTagCookingTime,
         cuisine: this.activeTagCuisine,
-        dietPreferences: this.activeTagDietPreferences,
+        dietpreferences: this.activeTagDietPreferences,
       });
       this.sendPreferencesList();
       this.router.navigate(['\loading']);

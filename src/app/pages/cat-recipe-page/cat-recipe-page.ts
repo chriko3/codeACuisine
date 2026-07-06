@@ -62,6 +62,5 @@ export class CatRecipePage {
         source: 'db'
       }
     });
-    console.log(id);
   }
 }

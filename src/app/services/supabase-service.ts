@@ -10,6 +10,24 @@ export class SupabaseService {
     'sb_publishable_xGeMRhxNbq7I8qxqfCv_oA_njqQlwzr',
   );
 
+  subscribeToRecipesByIdGetLikes(id: number, callback: (likes: number) => void) {
+    this.supabase
+      .channel('custom-all-channel')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'recipes', filter: `id=eq.${id}` },
+        (payload: any) => {
+          const likes = payload.new.likes;
+          callback(likes);
+        },
+      )
+      .subscribe();
+  }
+
+  unsubscribeRecipes() {
+    this.supabase.removeAllChannels();
+  }
+
   async saveRecipes(
     name: string,
     time: number,
@@ -38,11 +56,19 @@ export class SupabaseService {
         protein: protein,
         fat: fat,
         carbs: carbs,
-        // yourIngredients:yourIngredients,
-        // extraIngredients:extraIngredients,
-        // directions:directions
+        yourIngredients: yourIngredients,
+        extraIngredients: extraIngredients,
+        directions: directions,
       })
       .select();
+    return data;
+  }
+
+  async getAllRecipes() {
+    let { data } = await this.supabase
+      .from('recipes')
+      .select('*')
+      .order('id', { ascending: false });
     return data;
   }
 

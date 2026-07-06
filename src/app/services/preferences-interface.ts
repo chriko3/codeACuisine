@@ -3,5 +3,5 @@ export interface PreferencesInterface {
     persons:number;
     cookingTime:string;
     cuisine:string;
-    dietPreferences:string;
+    dietpreferences:string;
 }
