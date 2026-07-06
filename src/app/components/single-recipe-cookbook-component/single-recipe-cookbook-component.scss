@@ -16,6 +16,9 @@ section {
 
   &:hover {
     background-color: rgba(250, 240, 230, 0.7);
+    cursor:
+      url('/assets/img/cursor_hand.png') 0 0,
+      pointer;
   }
 }
 
@@ -70,10 +73,4 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.cursor-pointer {
-  cursor:
-    url('/assets/img/cursor_hand.png') 0 0,
-    pointer;
 }

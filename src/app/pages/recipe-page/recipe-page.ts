@@ -32,22 +32,35 @@ export class RecipePage {
   ) {}
 
   url = '';
+  urlNumber = 0;
   source = '';
   sStorage = sessionStorage.getItem('kiRecipes');
   recipes: any[] = [];
   recipeNumber = 0;
-  likes = 0;
+  likedRecipes: number[] = JSON.parse(localStorage.getItem('likedRecipes') || '[]');
+  liked = false;
   loading = true;
+
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.recipeNumber = Number(params.get('id')) - 1;
+      this.urlNumber = this.recipeNumber + 1;
     });
 
     this.route.queryParams.subscribe((params) => {
       this.source = params['source'];
     });
-
+    this.checkIfLiked();
     this.checkSourceAndSetArray();
+  }
+
+  checkIfLiked() {
+    if (this.likedRecipes.includes(this.urlNumber)) {
+      this.liked = true;
+    } else {
+      this.liked = false;
+    }
+    this.cdr.detectChanges();
   }
 
   checkSourceAndSetArray() {
@@ -71,11 +84,26 @@ export class RecipePage {
     }
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.supabaseService.unsubscribeRecipes();
   }
 
   getArray(n: number): number[] {
     return Array(n).fill(0);
+  }
+
+  likeUnlikeRecipe() {
+    const index = this.likedRecipes.indexOf(this.urlNumber);
+    if (index === -1) {
+      this.likedRecipes.push(this.urlNumber);
+      this.supabaseService.likeRecipeById(this.urlNumber);
+    } else {
+      if (this.recipes[this.recipeNumber].likes !== 0) {
+        this.likedRecipes.splice(index, 1);
+        this.supabaseService.unlikeRecipeById(this.urlNumber);
+      }
+    }
+    this.checkIfLiked();
+    localStorage.setItem('likedRecipes', JSON.stringify(this.likedRecipes));
   }
 }

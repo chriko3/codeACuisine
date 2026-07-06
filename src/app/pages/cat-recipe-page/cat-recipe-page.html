@@ -26,7 +26,7 @@
               [time]="recipes[$index].cookingTime"
               [cuisine]="recipes[$index].cuisine"
               [diet]="recipes[$index].dietpreferences"
-              [likes]="0"
+              [likes]="recipes[$index].likes"
               (click)="openRecipe(recipes[$index].id)"
             ></app-single-recipe-cookbook-component>
           }

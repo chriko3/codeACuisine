@@ -37,8 +37,10 @@
               [title]="recipes[$index].name"
               [timeInMin]="recipes[$index].time"
               [likes]="recipes[$index].likes"
+              (click)="openRecipe(recipes[$index].id)"
             ></app-most-liked-recipes-component>
           }
+          <p [class.display-none]="!loading">Loading recipes...</p>
         </div>
       </div>
     </div>

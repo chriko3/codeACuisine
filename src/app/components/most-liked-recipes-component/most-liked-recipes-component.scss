@@ -8,6 +8,12 @@ section {
   font-family: var(--font-quicksand);
   font-weight: 700;
 
+  &:hover {
+    cursor:
+      url('/assets/img/cursor_hand.png') 0 0,
+      pointer;
+  }
+
   p {
     margin: 0px;
   }
@@ -54,6 +60,5 @@ section {
     justify-content: center;
     color: rgba(16, 49, 11, 1);
     font-size: var(--font-size-16);
-    cursor: pointer;
   }
 }

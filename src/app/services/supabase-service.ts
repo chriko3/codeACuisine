@@ -86,4 +86,20 @@ export class SupabaseService {
     let { data } = await this.supabase.from('recipes').select('*').eq('name', name);
     return data;
   }
+
+  async likeRecipeById(id: number) {
+    const { data } = await this.supabase.from('recipes').select('likes').eq('id', id).single();
+    await this.supabase
+      .from('recipes')
+      .update({ likes: (data?.likes ?? 0) + 1 })
+      .eq('id', id);
+  }
+
+    async unlikeRecipeById(id: number) {
+    const { data } = await this.supabase.from('recipes').select('likes').eq('id', id).single();
+    await this.supabase
+      .from('recipes')
+      .update({ likes: (data?.likes ?? 0) - 1 })
+      .eq('id', id);
+  }
 }

@@ -47,7 +47,11 @@
               <div class="tag">
                 <p>{{ recipes[recipeNumber].cookingTime }}</p>
               </div>
-              <div class="tag click">
+              <div
+                class="tag click"
+                (click)="likeUnlikeRecipe()"
+                [class.liked]="liked"
+              >
                 <svg
                   width="20"
                   height="20"
