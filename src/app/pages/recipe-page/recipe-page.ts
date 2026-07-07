@@ -69,6 +69,22 @@ export class RecipePage {
         this.recipes = JSON.parse(this.sStorage).recipes;
         this.cdr.detectChanges();
         this.loading = false;
+        this.supabaseService.getAmountLastRecipes(3).then((data) => {
+          if (data) {
+            for (let index = 0; index < data.length; index++) {
+              if (this.recipes[this.recipeNumber].name == data[index].name) {
+                this.recipes[this.recipeNumber].id = data[index].id;
+                this.recipes[this.recipeNumber].likes = data[index].likes;
+                this.urlNumber = data[index].id;
+                this.supabaseService.subscribeToRecipesByIdGetLikes(data[index].id, (likes) => {
+                  this.recipes[this.recipeNumber].likes = likes;
+                  this.cdr.detectChanges();
+                });
+              }
+            }
+            this.cdr.detectChanges();
+          }
+        });
       }
     } else if (this.source == 'db') {
       this.supabaseService.getRecipesById(this.recipeNumber + 1).then((data) => {

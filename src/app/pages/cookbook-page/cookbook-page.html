@@ -33,12 +33,14 @@
         </div>
         <div class="most-liked-recipes">
           @for (item of recipes; track $index) {
-            <app-most-liked-recipes-component
-              [title]="recipes[$index].name"
-              [timeInMin]="recipes[$index].time"
-              [likes]="recipes[$index].likes"
-              (click)="openRecipe(recipes[$index].id)"
-            ></app-most-liked-recipes-component>
+            @if ($index < 6) {
+              <app-most-liked-recipes-component
+                [title]="recipes[$index].name"
+                [timeInMin]="recipes[$index].time"
+                [likes]="recipes[$index].likes"
+                (click)="openRecipe(recipes[$index].id)"
+              ></app-most-liked-recipes-component>
+            }
           }
           <p [class.display-none]="!loading">Loading recipes...</p>
         </div>

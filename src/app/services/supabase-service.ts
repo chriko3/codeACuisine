@@ -72,6 +72,15 @@ export class SupabaseService {
     return data;
   }
 
+  async getAmountLastRecipes(amount:number) {
+    let { data } = await this.supabase
+      .from('recipes')
+      .select('*')
+      .order('id', { ascending: false })
+      .limit(amount);
+    return data;
+  }
+
   async getRecipesByCuisine(cuisine: string) {
     let { data } = await this.supabase.from('recipes').select('*').eq('cuisine', cuisine);
     return data;
@@ -95,7 +104,7 @@ export class SupabaseService {
       .eq('id', id);
   }
 
-    async unlikeRecipeById(id: number) {
+  async unlikeRecipeById(id: number) {
     const { data } = await this.supabase.from('recipes').select('likes').eq('id', id).single();
     await this.supabase
       .from('recipes')
