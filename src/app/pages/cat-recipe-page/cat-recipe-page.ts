@@ -26,6 +26,10 @@ export class CatRecipePage {
   capitalized = '';
   recipes: any[] = [];
   noRecipes = false;
+
+  startRecipes = 0;
+  endRecipes = 15;
+
   loading = true;
   constructor(
     private router: Router,
@@ -53,14 +57,33 @@ export class CatRecipePage {
   }
 
   getArray(n: number): number[] {
-    return Array(Math.round(n)).fill(0);
+    return Array(Math.ceil(n)).fill(0);
   }
 
   openRecipe(id: number) {
-    this.router.navigate(['/recipe', id],{
-      queryParams:{
-        source: 'db'
-      }
+    this.router.navigate(['/recipe', id], {
+      queryParams: {
+        source: 'db',
+      },
     });
+  }
+
+  nextPage() {
+    if (this.endRecipes < this.recipes.length) {
+      this.startRecipes += 15;
+      this.endRecipes += 15;
+    }
+  }
+
+  previousPage() {
+    if (this.startRecipes >= 15) {
+      this.startRecipes -= 15;
+      this.endRecipes -= 15;
+    }
+  }
+
+  goToPage(page: number) {
+    this.startRecipes = (page - 1) * 15;
+    this.endRecipes = page * 15;
   }
 }

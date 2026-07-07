@@ -18,7 +18,7 @@
           <p>Loading recipes...</p>
         </div>
         @for (item of recipes; track $index) {
-          @if ($index < 15) {
+          @if ($index >= startRecipes && $index < endRecipes) {
             <app-single-recipe-cookbook-component
               [number]="$index + 1"
               [title]="recipes[$index].name"
@@ -42,10 +42,14 @@
       </div>
 
       <div class="navigation">
-        @for (item of getArray(recipes.length / 15); track $index) {
-          <p>
-            {{ $index + 1 }}
-          </p>
+        @if (recipes.length > 0) {
+          <p (click)="previousPage()"><</p>
+          @for (item of getArray(recipes.length / 15); track $index) {
+            <p (click)="goToPage($index + 1)">
+              {{ $index + 1 }}
+            </p>
+          }
+          <p (click)="nextPage()">></p>
         }
       </div>
     </div>

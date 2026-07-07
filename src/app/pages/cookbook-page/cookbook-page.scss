@@ -66,6 +66,24 @@
   align-items: center;
   gap: 12px;
   overflow-x: auto;
+  padding-bottom: 12px;
+
+  &::-webkit-scrollbar {
+    height: 8px; 
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #396039;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #2d4d2d;
+  }
 }
 
 .categories {
