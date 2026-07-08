@@ -57,7 +57,7 @@
   display: flex;
   align-items: center;
   font-size: var(--font-size-24);
-  svg{
+  svg {
     margin-right: 4px;
   }
 }
@@ -68,5 +68,39 @@
   align-items: center;
   app-tag-button-component {
     margin-right: 5px !important;
+  }
+}
+
+@media (max-width: 1450px) {
+
+  .preferences{
+    overflow-y: auto;
+  }
+
+  .head {
+    font-size: var(--font-size-24);
+  }
+
+  .menu {
+    align-items: start;
+    margin: 10px 16px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .settings{
+    width: 100%;
+    flex-direction: column;
+    align-items: start;
+    gap: 24px;
+  }
+
+  .preferences-box{
+    width: 100%;
+    height: auto;
+  }
+
+  .tags{
+    flex-wrap: wrap;
   }
 }

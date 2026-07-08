@@ -15,7 +15,6 @@ button {
     pointer;
 }
 
-
 button,
 div,
 span {
@@ -30,6 +29,14 @@ img {
   -webkit-user-drag: none;
   user-drag: none;
   pointer-events: none;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
 }
 
 .wrapper {

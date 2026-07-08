@@ -1,7 +1,7 @@
 section {
   min-height: 176px;
-  max-height: 500px;
-  width: 577px;
+  max-height: 420px;
+  max-width: 577px;
   overflow-y: auto;
   background-color: rgba(57, 96, 57, 0.3);
   border-radius: 20px;
@@ -15,9 +15,6 @@ section {
   p {
     margin: 0px;
   }
-}
-
-.container {
 }
 
 .ingredients {
@@ -68,4 +65,12 @@ li {
   border-radius: 10px;
 }
 
-
+@media (max-width: 1450px) {
+  section {
+    width: 100% !important;
+    height: auto;
+    font-size: var(--font-size-18);
+    padding: 18px;
+    overflow-y: hidden;
+  }
+}

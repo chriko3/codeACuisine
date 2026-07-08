@@ -1,7 +1,7 @@
 section {
   min-height: 176px;
   max-height: 209px;
-  width: 577px;
+  max-width: 577px;
   background-color: rgba(57, 96, 57, 0.3);
   border-radius: 20px;
   padding: 25px 33px;
@@ -54,9 +54,21 @@ section {
 
 @media (max-width: 1450px) {
   section {
+    width: 100%;
+    max-height: 340px;
     font-size: var(--font-size-18);
+    padding: 18px;
   }
-  .container{
+  .container {
     flex-direction: column;
+    gap: 16px;
+  }
+
+  .left {
+    width: 100%;
+  }
+
+  .right {
+    width: 50%;
   }
 }
