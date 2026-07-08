@@ -33,7 +33,7 @@ export class GenerateRecipePage {
   ingredientList: IngredientInterface[] = [];
 
   enoughtIngredients = false;
-
+  
   ngOnInit() {
     this.deleteSessionStorage();
   }
@@ -67,7 +67,6 @@ export class GenerateRecipePage {
       ];
       this.ingredient = '';
       this.amount = '';
-      console.log(this.ingredientList);
       this.checkIfEnoughtIngredients();
     }
   }
@@ -91,8 +90,6 @@ export class GenerateRecipePage {
       .post('http://localhost:5678/webhook/ingredients', {
         ingredientList: this.ingredientList,
       })
-      .subscribe((res) => {
-        console.log(res);
-      });
+      .subscribe((res) => {});
   }
 }

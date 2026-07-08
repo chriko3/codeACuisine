@@ -13,4 +13,8 @@ export class MenuBarComponent {
   @Input() text?:string;
   @Input() goTo?:string;
   
+  log(){
+    console.log('clicked');
+    
+  }
 }

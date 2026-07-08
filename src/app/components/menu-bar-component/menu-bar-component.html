@@ -110,7 +110,7 @@
         </defs>
       </svg>
 
-      <div class="arrow" [style.display]="displayArrow ? 'flex' : 'none'" routerLink={{goTo}}>
+      <div class="arrow" [style.display]="displayArrow ? 'flex' : 'none'" routerLink="{{ goTo }}">
         <svg
           width="22"
           height="15"
@@ -129,6 +129,7 @@
   } @else if (color === 'white') {
     <div class="container">
       <svg
+        routerLink="/"
         width="142"
         height="48"
         viewBox="0 0 142 48"

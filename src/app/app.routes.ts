@@ -17,4 +17,5 @@ export const routes: Routes = [
   { path: 'recipe/:id', component: RecipePage },
   { path: 'cookbook', component: CookbookPage },
   { path: 'recipes/:id', component: CatRecipePage },
+  { path: '**', component: HomePage },
 ];

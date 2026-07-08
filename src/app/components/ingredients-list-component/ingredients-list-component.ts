@@ -14,7 +14,6 @@ export class IngredientsListComponent {
   @Output() delete = new EventEmitter<number>();
 
   deleteIngredient(index: number) {
-    // this.ingredientList.splice(index, 1);
     this.delete.emit(index);
   }
 }

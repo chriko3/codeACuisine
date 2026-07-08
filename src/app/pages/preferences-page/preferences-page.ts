@@ -89,7 +89,6 @@ export class PreferencesPage {
       });
       this.sendPreferencesList();
       this.router.navigate(['\loading']);
-      console.log(this.allPreferences);
     }
   }
 
