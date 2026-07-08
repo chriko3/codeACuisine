@@ -23,8 +23,8 @@ button {
   }
 }
 
-.rotate{
-    transform: rotate(180deg);
+.rotate {
+  transform: rotate(180deg);
 }
 
 .green {
@@ -44,5 +44,21 @@ button {
 
   &:hover {
     background-color: rgba(250, 224, 198, 0.2);
+  }
+}
+
+@media (max-width: 1450px) {
+  button {
+    min-width: 197px;
+    padding-left: 0px;
+    font-size: var(--font-size-18);
+    font-weight: 100;
+  }
+
+  .green,
+  .white {
+    &:hover {
+      background-color: transparent;
+    }
   }
 }

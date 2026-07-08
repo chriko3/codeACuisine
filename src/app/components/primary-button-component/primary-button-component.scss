@@ -34,3 +34,10 @@ button {
     background-color: rgba(250, 224, 198, 1);
   }
 }
+
+@media (max-width: 1450px) {
+  button {
+    height: 52px;
+    font-size: var(--font-size-16);
+  }
+}

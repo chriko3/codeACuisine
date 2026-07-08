@@ -49,3 +49,29 @@
 .display-none {
   display: none;
 }
+
+@media (max-width: 1450px) {
+  .menu {
+    margin: 0 16px;
+    gap: 40px;
+  }
+
+  .head {
+    align-items: start;
+    p:first-of-type {
+      font-size: var(--font-size-32);
+      font-weight: 700;
+      color: rgba(30, 85, 21, 1);
+    }
+
+    p:last-of-type {
+      font-size: var(--font-size-18);
+      color: rgba(16, 49, 11, 1);
+      font-weight: 700;
+    }
+  }
+
+  .input{
+    flex-direction: column;
+  }
+}

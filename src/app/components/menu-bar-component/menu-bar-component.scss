@@ -44,3 +44,17 @@ svg {
 .white {
   color: rgba(250, 240, 230, 1);
 }
+
+@media (max-width: 1450px) {
+  .container{
+    padding: 16px;
+    height: auto;
+  }
+
+  .arrow{
+    bottom: -20px;
+    p{
+      display:none;
+    }
+  }
+}

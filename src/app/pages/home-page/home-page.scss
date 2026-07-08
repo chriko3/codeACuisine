@@ -55,3 +55,47 @@
   bottom: 0px;
   right: 68px;
 }
+
+@media (max-width: 1450px) {
+  .home {
+    overflow-y: auto;
+  }
+
+  .title {
+    margin-top: 0px;
+    margin-left: 16px;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 40px;
+    p:first-of-type {
+      word-break: normal;
+      font-size: var(--font-size-24);
+    }
+    p:last-of-type {
+      font-size: var(--font-size-64);
+      font-weight: 700;
+    }
+  }
+
+  .cookbook {
+    position: absolute;
+    bottom: 40px;
+    margin-left: 16px;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 10px;
+
+    p {
+      font-size: var(--font-size-24);
+      font-weight: 700;
+    }
+  }
+
+  .plate1,
+  .plate2,
+  .plate3{
+    display:none;
+  }
+}
