@@ -60,6 +60,10 @@ p {
   justify-content: space-between;
 }
 
+.responsiv {
+  display: none;
+}
+
 @media (max-width: 1450px) {
   .results {
     overflow-y: auto;
@@ -105,9 +109,24 @@ p {
   }
 
   .list {
-    width: 100%;
     flex-direction: column;
     gap: 16px;
+    margin: 0px;
     margin-top: 220px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+  }
+
+  .list * {
+    width: 100%;
+  }
+
+  .responsiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+    margin-bottom: 32px;
+    margin-left: 20px;
   }
 }

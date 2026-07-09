@@ -20,14 +20,20 @@ section {
 }
 
 .m-t-25 {
-    margin-top: 25px !important;
+  margin-top: 25px !important;
 }
 
-.m-b-10{
-    margin-bottom: 10px !important;
+.m-b-10 {
+  margin-bottom: 10px !important;
 }
 
-.cuisine{
-    font-size: 40px;
-    color: rgba(16, 49, 11, 1);
+.cuisine {
+  font-size: 40px;
+  color: rgba(16, 49, 11, 1);
+}
+
+@media (max-width: 1450px) {
+  section {
+    font-size: var(--font-size-24);
+  }
 }

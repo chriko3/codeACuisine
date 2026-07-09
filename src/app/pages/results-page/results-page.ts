@@ -4,10 +4,17 @@ import { TagButtonComponent } from '../../components/tag-button-component/tag-bu
 import { RecipeCardResultsComponent } from '../../components/recipe-card-results-component/recipe-card-results-component';
 import { Router, RouterLink } from '@angular/router';
 import { SupabaseService } from '../../services/supabase-service';
+import { SecondaryButtonComponent } from '../../components/secondary-button-component/secondary-button-component';
 
 @Component({
   selector: 'app-results-page',
-  imports: [RouterLink, MenuBarComponent, TagButtonComponent, RecipeCardResultsComponent],
+  imports: [
+    RouterLink,
+    MenuBarComponent,
+    TagButtonComponent,
+    RecipeCardResultsComponent,
+    SecondaryButtonComponent,
+  ],
   templateUrl: './results-page.html',
   styleUrl: './results-page.scss',
 })

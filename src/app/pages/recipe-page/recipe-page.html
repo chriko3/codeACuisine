@@ -31,7 +31,7 @@
                 <p>{{ recipes[recipeNumber].name }}</p>
               </div>
               <div class="person">
-                <p>Coocking person: {{ recipes[recipeNumber].persons }}</p>
+                <p class="responsiv">Coocking person: {{ recipes[recipeNumber].persons }}</p>
                 @for (item of getArray(recipes[recipeNumber].persons); track $index) {
                   <app-chef-label-component [chef]="$index"></app-chef-label-component>
                 }
@@ -47,11 +47,7 @@
               <div class="tag">
                 <p>{{ recipes[recipeNumber].cookingTime }}</p>
               </div>
-              <div
-                class="tag click"
-                (click)="likeUnlikeRecipe()"
-                [class.liked]="liked"
-              >
+              <div class="tag click" (click)="likeUnlikeRecipe()" [class.liked]="liked">
                 <svg
                   width="20"
                   height="20"
@@ -68,7 +64,7 @@
               </div>
             </div>
             <div class="infos">
-              <p>Nutritional information per serving</p>
+              <p>Nutritional information</p>
 
               <div class="facts">
                 <div class="fact">
@@ -148,8 +144,11 @@
         </div>
 
         <div class="feedback">
-          <p>Just finished this meal?</p>
-          <p>Give it a heart, so that the others know this is delicious.</p>
+          <div>
+            <p>Just finished this meal?</p>
+            <p>Give it a heart, so that the others know this is delicious.</p>
+          </div>
+
           <svg
             width="52"
             height="48"

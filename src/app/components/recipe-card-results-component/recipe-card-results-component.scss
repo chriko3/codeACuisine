@@ -50,3 +50,18 @@ section {
   font-weight: 700;
   color: rgba(57, 96, 57, 1);
 }
+
+@media (max-width: 1450px) {
+  section {
+    width: 100%;
+    height: 300px;
+  }
+
+  .info{
+    font-size: var(--font-size-24);
+  }
+
+  .time{
+    font-size: var(--font-size-18);
+  }
+}
