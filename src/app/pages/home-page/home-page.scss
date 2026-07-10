@@ -74,9 +74,6 @@
 }
 
 @media (max-width: 1450px) {
-  .home {
-    overflow-y: auto;
-  }
 
   .title {
     margin-top: 0px;
@@ -97,7 +94,7 @@
 
   .cookbook {
     position: absolute;
-    bottom: 40px;
+    bottom: 16px;
     margin-left: 16px;
     display: flex;
     align-items: start;
@@ -143,5 +140,15 @@
 
   .mobile {
     display: block;
+  }
+}
+
+@media (max-width: 370px) {
+  .plate1,
+  .plate2,
+  .plate3 {
+    position: absolute;
+    right: -400px;
+    z-index: 1;
   }
 }

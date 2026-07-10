@@ -10,10 +10,11 @@ div {
   gap: 10px;
   font-size: var(--font-size-14);
   color: rgba(30, 85, 21, 1);
+  white-space: nowrap;
 }
 
 button {
-  min-width: 77px;
+  width: auto;
   height: 32px;
   border-radius: 30px;
   border: none;
@@ -36,6 +37,6 @@ button {
   }
 }
 
-.clickable{
+.clickable {
   cursor: default !important;
 }
