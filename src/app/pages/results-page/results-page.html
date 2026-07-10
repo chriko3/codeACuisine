@@ -1,53 +1,55 @@
-<div class="results">
-  <div class="wrapper">
-    <app-menu-bar-component [color]="'white'"></app-menu-bar-component>
+@if (recipes.length > 0) {
+  <div class="results">
+    <div class="wrapper">
+      <app-menu-bar-component [color]="'white'"></app-menu-bar-component>
 
-    <div class="head">
-      <div class="left">
-        <p>The recipe results</p>
-        <img class="mobile-img img" src="assets/img/ki.png" alt="" />
+      <div class="head">
+        <div class="left">
+          <p>The recipe results</p>
+          <img class="mobile-img img" src="assets/img/ki.png" alt="" />
 
-        <p>
-          We took what you have and let our AI do the thinking. Here are 3 easy recipes you can make
-          right now!
-        </p>
-        <div class="tags">
-          <app-tag-button-component
-            [text]="recipes[0].cuisine"
-            [clickable]="false"
-          ></app-tag-button-component>
-          <app-tag-button-component
-            [text]="recipes[0].cookingTime"
-            [clickable]="false"
-          ></app-tag-button-component>
-          <app-tag-button-component
-            [text]="'Portions: ' + recipes[0].portions"
-            [clickable]="false"
-          ></app-tag-button-component>
+          <p>
+            We took what you have and let our AI do the thinking. Here are 3 easy recipes you can
+            make right now!
+          </p>
+          <div class="tags">
+            <app-tag-button-component
+              [text]="recipes[0].cuisine"
+              [clickable]="false"
+            ></app-tag-button-component>
+            <app-tag-button-component
+              [text]="recipes[0].cookingTime"
+              [clickable]="false"
+            ></app-tag-button-component>
+            <app-tag-button-component
+              [text]="'Portions: ' + recipes[0].portions"
+              [clickable]="false"
+            ></app-tag-button-component>
+          </div>
+        </div>
+
+        <div class="right">
+          <img class="img" src="assets/img/ki.png" alt="" />
         </div>
       </div>
 
-      <div class="right">
-        <img class="img" src="assets/img/ki.png" alt="" />
+      <div class="list">
+        @for (item of recipes; track $index) {
+          <app-recipe-card-results-component
+            [number]="$index + 1"
+            [title]="recipes[$index].name"
+            [timeInMin]="recipes[$index].time"
+            (clicked)="openRecipe($index + 1)"
+          ></app-recipe-card-results-component>
+        }
+      </div>
+      <div class="responsiv">
+        <app-secondary-button-component
+          [color]="'white'"
+          [text]="'Generate new recipe'"
+          routerLink="/generate-recipe"
+        ></app-secondary-button-component>
       </div>
     </div>
-
-    <div class="list">
-      @for (item of recipes; track $index) {
-        <app-recipe-card-results-component
-          [number]="$index + 1"
-          [title]="recipes[$index].name"
-          [timeInMin]="recipes[$index].time"
-          (clicked)="openRecipe($index + 1)"
-        ></app-recipe-card-results-component>
-      }
-    </div>
-    <div class="responsiv">
-      <app-secondary-button-component
-        [color]="'white'"
-        [text]="'Generate new recipe'"
-        routerLink="/generate-recipe"
-      ></app-secondary-button-component>
-    </div>
   </div>
-</div>
+}

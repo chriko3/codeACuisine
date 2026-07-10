@@ -349,11 +349,13 @@
     gap: 24px;
   }
 
+
   .ingredients-col {
     flex: 0 0 auto;
     max-width: 260px;
 
     p:first-of-type {
+      text-align: center;
       font-size: var(--font-size-18);
     }
     ul {

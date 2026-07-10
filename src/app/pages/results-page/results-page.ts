@@ -29,10 +29,10 @@ export class ResultsPage {
   ngOnInit() {
     if (this.sStorage) {
       this.recipes = JSON.parse(this.sStorage).recipes;
-    } else if (!this.sStorage) {
+      this.saveToDB();
+    } else {
       this.router.navigate(['/']);
     }
-    this.saveToDB();
   }
 
   saveToDB() {

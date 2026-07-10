@@ -2,7 +2,7 @@ section {
   width: 100%;
   box-sizing: border-box;
   font-family: var(--font-quicksand);
-  font-size: var(-f-ont-size-32);
+  font-size: var(--font-size-32);
   color: rgba(30, 85, 21, 1);
   font-weight: 700;
 
@@ -14,8 +14,7 @@ section {
     width: 100%;
     height: auto;
     max-height: 150px;
-
-    max-width: 100%;
+    max-width: 1000px;
     min-width: 0;
   }
 
@@ -39,14 +38,27 @@ section {
 }
 
 @media (max-width: 1450px) {
-  section {
-    font-size: var(--font-size-16);
-  }
   .m-t-25 {
     margin-top: 5px !important;
   }
 
   .m-b-10 {
     margin-bottom: 0px !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  section {
+    p {
+      font-size: var(--font-size-18);
+    }
+  }
+}
+
+@media (max-width: 530px) {
+  section {
+    p {
+      font-size: var(--font-size-16);
+    }
   }
 }
