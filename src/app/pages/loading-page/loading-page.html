@@ -2,11 +2,25 @@
   <div class="wrapper">
     <app-menu-bar-component [color]="'white'"></app-menu-bar-component>
     <div class="container">
-      <div class="animation">
-        <img src="assets/img/loading.gif" alt="" />
+      <div class="load" [class.display-none]="error">
+        <div class="animation">
+          <img src="assets/img/loading.gif" alt="" />
+        </div>
+        <p class="info">This process can take up to 1 minute</p>
+        <p>{{ displayLoadingText }}</p>
       </div>
-      <p class="info">This process can take up to 1 minute</p>
-      <p>{{ displayLoadingText }}</p>
+      <div class="error" [class.display-none]="!error">
+        <p>Ups! Somthing went wrong...</p>
+        <p>
+          Some ingredient quantities do not match the selected number of servings, or incorrect
+          ingredients were entered. Please review the details and try again.
+        </p>
+        <app-secondary-button-component
+          [color]="'white'"
+          [text]="'Go back to ingredients'"
+          routerLink="/generate-recipe"
+        ></app-secondary-button-component>
+      </div>
     </div>
   </div>
 </div>
