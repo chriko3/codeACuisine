@@ -65,5 +65,23 @@
 }
 
 @media (max-width: 1450px) {
+  .generate {
+    display: none;
+  }
 
+  .all-recipes {
+    margin-top: 40px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .all-recipes app-single-cuisine-component p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .list{
+    width: 100%;
+  }
 }

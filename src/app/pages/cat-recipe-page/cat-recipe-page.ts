@@ -72,6 +72,7 @@ export class CatRecipePage {
     if (this.endRecipes < this.recipes.length) {
       this.startRecipes += 15;
       this.endRecipes += 15;
+      window.scrollTo(0, 0);
     }
   }
 
@@ -79,11 +80,13 @@ export class CatRecipePage {
     if (this.startRecipes >= 15) {
       this.startRecipes -= 15;
       this.endRecipes -= 15;
+      window.scrollTo(0, 0);
     }
   }
 
   goToPage(page: number) {
     this.startRecipes = (page - 1) * 15;
     this.endRecipes = page * 15;
+    window.scrollTo(0, 0);
   }
 }

@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { TimeFormatPipe } from '../../services/time-format-pipe';
-import { EditDeleteComponent } from '../edit-delete-component/edit-delete-component';
 
 @Component({
   selector: 'app-single-recipe-cookbook-component',
-  imports: [TimeFormatPipe, EditDeleteComponent],
+  imports: [TimeFormatPipe],
   templateUrl: './single-recipe-cookbook-component.html',
   styleUrl: './single-recipe-cookbook-component.scss',
 })
