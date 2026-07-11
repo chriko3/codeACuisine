@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuBarComponent } from '../../components/menu-bar-component/menu-bar-component';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { MinusPlusComponent } from '../../components/minus-plus-component/minus-plus-component';
 import { PaginationComponent } from '../../components/pagination-component/pagination-component';
 import { TagButtonComponent } from '../../components/tag-button-component/tag-button-component';
@@ -12,7 +12,6 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-preferences-page',
   imports: [
     MenuBarComponent,
-    RouterLink,
     MinusPlusComponent,
     PaginationComponent,
     TagButtonComponent,

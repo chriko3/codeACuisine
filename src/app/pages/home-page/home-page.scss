@@ -115,7 +115,6 @@
   .plate2,
   .plate3 {
     position: absolute;
-    right: -360px;
     z-index: 1;
   }
 
@@ -141,7 +140,13 @@
     display: block;
   }
 }
-
+@media (max-width: 1200px) {
+  .plate1,
+  .plate2,
+  .plate3 {
+    right: -360px;
+  }
+}
 @media (max-width: 370px) {
   .plate1,
   .plate2,

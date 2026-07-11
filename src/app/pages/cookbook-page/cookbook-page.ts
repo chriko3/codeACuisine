@@ -5,7 +5,6 @@ import { MostLikedRecipesComponent } from '../../components/most-liked-recipes-c
 import { RecipeCardCookBookComponent } from '../../components/recipe-card-cook-book-component/recipe-card-cook-book-component';
 import { SecondaryButtonComponent } from '../../components/secondary-button-component/secondary-button-component';
 import { SupabaseService } from '../../services/supabase-service';
-import { TimeFormatPipe } from '../../services/time-format-pipe';
 
 @Component({
   selector: 'app-cookbook-page',
@@ -15,7 +14,6 @@ import { TimeFormatPipe } from '../../services/time-format-pipe';
     MostLikedRecipesComponent,
     RecipeCardCookBookComponent,
     SecondaryButtonComponent,
-    TimeFormatPipe,
   ],
   templateUrl: './cookbook-page.html',
   styleUrl: './cookbook-page.scss',

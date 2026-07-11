@@ -50,9 +50,8 @@ img {
 }
 
 @font-face {
-  font-family: Quicksand;
-  //src: url(angular-projects/codeACuisine/assets/fonts/Quicksand.ttf);
-  src: url(/assets/fonts/Quicksand.ttf);
+  font-family: 'Quicksand';
+  src: url('../public/assets/fonts/Quicksand.ttf') format('truetype');
 }
 
 :root {
