@@ -5,13 +5,25 @@
     <div class="ingredients"></div>
     <ul>
       @for (ingredient of ingredientList.slice().reverse(); track $index) {
-        <li>
-          <div>
-            <span>{{ ingredient.amount }}{{ ingredient.type | measurementPipe }}</span
+        <li [class.editing]="editingIndex === $index">
+          <div class="ingredient-edit" [class.display-none]="editingIndex !== $index">
+            <app-input-field-component
+              [value]="ingredient.amount"
+              (inputTextSend)="onAmountInput($event)"
+            ></app-input-field-component>
+            <app-measurements-component
+              [selectedValue]="ingredient.type"
+            ></app-measurements-component>
+          </div>
+          <div class="text">
+            <span [class.display-none]="editingIndex === $index"
+              >{{ ingredient.amount }}{{ ingredient.type | measurementPipe }}</span
             ><span>{{ ingredient.ingredient }}</span>
           </div>
           <div class="actions">
-            <app-edit-delete-component (clicked)="editIngredient($index)"></app-edit-delete-component>
+            <app-edit-delete-component
+              (clicked)="editIngredient($index)"
+            ></app-edit-delete-component>
             <app-edit-delete-component
               [editOrDelete]="'delete'"
               (clicked)="deleteIngredient(ingredientList.length - 1 - $index)"

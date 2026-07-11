@@ -24,7 +24,6 @@ section {
   gap: 25px;
 }
 
-// left
 .left {
   width: 300px;
 }
@@ -40,7 +39,6 @@ section {
   }
 }
 
-//right
 .right {
   flex: 1;
 }
@@ -70,5 +68,11 @@ section {
 
   .right {
     width: 50%;
+  }
+}
+
+@media (max-width: 450px) {
+  section {
+    padding: 12px;
   }
 }

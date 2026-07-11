@@ -15,7 +15,7 @@ section {
   p {
     margin: 0px;
   }
-  
+
   &::-webkit-scrollbar {
     height: 8px;
   }
@@ -51,14 +51,32 @@ li {
   transition: background-color 0.15s ease-in;
   border-radius: 8px;
 
+  div:first-of-type {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 170px;
+  }
+
+  .display-none {
+    display: none !important;
+  }
+
   div {
     display: grid;
     grid-template-columns: 80px 1fr;
     box-sizing: border-box;
     padding: 5px;
+    height: auto;
   }
   &:hover {
     background-color: rgba(250, 240, 230, 1);
+  }
+
+  &.editing {
+    &:hover {
+      background-color: transparent;
+    }
   }
 
   .actions {
@@ -84,11 +102,35 @@ li {
 
 @media (max-width: 1450px) {
   section {
-    width: 100% !important;
-    
+    max-width: 100%;
+
     height: auto;
     font-size: var(--font-size-18);
     padding: 18px;
-    overflow-y: hidden;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 450px) {
+  section {
+    padding: 12px;
+  }
+  .text {
+    display: flex;
+    gap: 8px;
+
+    span:last-child {
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+  }
+
+  li {
+    div:first-of-type {
+      align-items: center;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 90px;
+    }
   }
 }

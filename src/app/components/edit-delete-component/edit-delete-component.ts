@@ -19,4 +19,9 @@ export class EditDeleteComponent {
     this.selected = !this.selected;
     this.clicked.emit();
   }
+
+  changeIcon(){
+    console.log('clicked');
+    
+  }
 }

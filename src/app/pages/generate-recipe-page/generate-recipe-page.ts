@@ -89,6 +89,7 @@ export class GenerateRecipePage {
       this.ingredient = '';
       this.amount = '';
       this.type = 'gram';
+      this.suggestion = '';
       this.checkIfEnoughtIngredients();
     }
   }
@@ -101,14 +102,6 @@ export class GenerateRecipePage {
     this.ingredientList.splice(index, 1);
     this.ingredientList = [...this.ingredientList];
     this.checkIfEnoughtIngredients();
-  }
-
-  /**
-   * Edits an ingredient by its index.
-   * Currently only logs the index.
-   */
-  editIngredient(index: number) {
-    console.log(index);
   }
 
   /**

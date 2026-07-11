@@ -23,7 +23,6 @@
         <app-ingredients-list-component
           [ingredientList]="ingredientList"
           (delete)="deleteIngredient($event)"
-          (edit)="editIngredient($event)"
         ></app-ingredients-list-component>
       </div>
       <div class="bottom" [class.display-none]="!enoughtIngredients">
