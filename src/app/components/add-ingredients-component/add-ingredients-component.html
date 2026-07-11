@@ -4,9 +4,10 @@
       <p>Ingredient</p>
       <app-input-field-component
         (inputTextSend)="onIngredientInput($event)"
+        [value]="ingredientValue"
       ></app-input-field-component>
       <div class="results">
-        <p>{{suggestion}}</p>
+        <p (click)="getSuggestion()">{{ suggestion  }}</p>
       </div>
     </div>
     <div class="right">
@@ -14,10 +15,15 @@
       <div class="input">
         <app-input-field-component
           (inputTextSend)="onAmountInput($event)"
+          [value]="amountValue"
           [placeholder]="'100'"
           [type]="'number'"
         ></app-input-field-component>
-        <app-measurements-component (selectedSend)="onSelected($event)"> </app-measurements-component>
+        <app-measurements-component
+          (selectedSend)="onSelected($event)"
+          [selectedValue]="measurement"
+        >
+        </app-measurements-component>
         <app-add-component (clicked)="onClick()"></app-add-component>
       </div>
     </div>

@@ -12,8 +12,14 @@ import { MeasurementPipe } from '../../services/measurement-pipe';
 export class IngredientsListComponent {
   @Input() ingredientList: IngredientInterface[] = [];
   @Output() delete = new EventEmitter<number>();
+  @Output() edit = new EventEmitter<number>();
 
   deleteIngredient(index: number) {
     this.delete.emit(index);
+  }
+
+  editIngredient(index:number){
+    this.edit.emit(index);
+
   }
 }

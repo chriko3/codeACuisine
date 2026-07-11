@@ -11,7 +11,7 @@
             ><span>{{ ingredient.ingredient }}</span>
           </div>
           <div class="actions">
-            <app-edit-delete-component></app-edit-delete-component>
+            <app-edit-delete-component (clicked)="editIngredient($index)"></app-edit-delete-component>
             <app-edit-delete-component
               [editOrDelete]="'delete'"
               (clicked)="deleteIngredient(ingredientList.length - 1 - $index)"

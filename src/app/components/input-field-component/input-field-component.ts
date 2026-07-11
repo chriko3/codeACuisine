@@ -9,6 +9,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class InputFieldComponent {
   @Input() placeholder = '';
   @Input() type: 'text' | 'number' = 'text';
+  @Input() value = '';
 
   @Output() inputTextSend = new EventEmitter<string>();
 

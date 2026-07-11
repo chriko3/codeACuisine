@@ -1,4 +1,4 @@
-import { Component,Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { InputFieldComponent } from '../input-field-component/input-field-component';
 import { MeasurementsComponent } from '../measurements-component/measurements-component';
 import { AddComponent } from '../add-component/add-component';
@@ -10,7 +10,10 @@ import { AddComponent } from '../add-component/add-component';
   styleUrl: './add-ingredients-component.scss',
 })
 export class AddIngredientsComponent {
-  @Input() suggestion: string | undefined;
+  @Input() suggestion: string | any;
+  @Input() ingredientValue = '';
+  @Input() amountValue = '';
+  @Input() measurement = '';
 
   @Output() ingredient = new EventEmitter<string>();
   @Output() amount = new EventEmitter<string>();
@@ -31,5 +34,11 @@ export class AddIngredientsComponent {
 
   onClick() {
     this.clicked.emit();
+  }
+
+  getSuggestion() {
+    this.ingredientValue = this.suggestion;
+    this.ingredient.emit(this.suggestion);
+    this.suggestion = '';
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-measurements-component',
@@ -8,7 +8,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class MeasurementsComponent {
   rotate = false;
-  selected = "gram";
+  @Input() selectedValue = 'gram';
 
   @Output() selectedSend = new EventEmitter<string>();
 
@@ -17,7 +17,7 @@ export class MeasurementsComponent {
   }
 
   select(selection:string){
-    this.selected = selection;
+    this.selectedValue = selection;
     this.selectedSend.emit(selection);
   }
 }

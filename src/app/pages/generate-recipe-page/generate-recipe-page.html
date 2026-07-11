@@ -11,15 +11,19 @@
       <div class="input">
         <app-add-ingredients-component
           [suggestion]="suggestion"
+          [ingredientValue]="ingredient"
           (ingredient)="onIngredientChange($event)"
+          [amountValue]="amount"
           (amount)="onAmountChange($event)"
           (selected)="onSelectedChange($event)"
+          [measurement]="type"
           (clicked)="addToIngredientsList()"
         ></app-add-ingredients-component>
 
         <app-ingredients-list-component
           [ingredientList]="ingredientList"
           (delete)="deleteIngredient($event)"
+          (edit)="editIngredient($event)"
         ></app-ingredients-list-component>
       </div>
       <div class="bottom" [class.display-none]="!enoughtIngredients">

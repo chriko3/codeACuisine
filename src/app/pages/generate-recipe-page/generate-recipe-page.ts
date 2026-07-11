@@ -33,7 +33,7 @@ export class GenerateRecipePage {
   ingredientList: IngredientInterface[] = [];
 
   enoughtIngredients = false;
-  
+
   ngOnInit() {
     this.deleteSessionStorage();
   }
@@ -67,6 +67,7 @@ export class GenerateRecipePage {
       ];
       this.ingredient = '';
       this.amount = '';
+      this.type = 'gram';
       this.checkIfEnoughtIngredients();
     }
   }
@@ -75,6 +76,10 @@ export class GenerateRecipePage {
     this.ingredientList.splice(index, 1);
     this.ingredientList = [...this.ingredientList];
     this.checkIfEnoughtIngredients();
+  }
+
+  editIngredient(index: number) {
+    console.log(index);
   }
 
   checkIfEnoughtIngredients() {
