@@ -17,7 +17,7 @@ export class IngredientsListComponent {
   @Input() ingredientList: IngredientInterface[] = [];
   @Output() delete = new EventEmitter<number>();
   amount = '';
-
+  type = '';
   /**
    * Emits the index of the ingredient to delete.
    * Sends the index to the listener.
@@ -32,17 +32,21 @@ export class IngredientsListComponent {
    */
   editIngredient(index: number) {
     if (this.editingIndex === index) {
+      this.ingredientList[index].amount = this.amount;
+      this.ingredientList[index].type = this.type;
       this.editingIndex = null;
     } else {
       this.editingIndex = index;
+      this.amount = this.ingredientList[index].amount;
+      this.type = this.ingredientList[index].type;
     }
-
-    this.amount = this.ingredientList[index].amount;
-    console.log('liste ' + this.ingredientList[index].amount);
   }
 
   onAmountInput(value: string) {
     this.amount = value;
-    console.log('input ' + this.amount);
+  }
+
+  onSelected(value: string){
+    this.type = value;
   }
 }

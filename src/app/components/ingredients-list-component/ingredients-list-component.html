@@ -4,7 +4,7 @@
 
     <div class="ingredients"></div>
     <ul>
-      @for (ingredient of ingredientList.slice().reverse(); track $index) {
+      @for (ingredient of ingredientList; track $index) {
         <li [class.editing]="editingIndex === $index">
           <div class="ingredient-edit" [class.display-none]="editingIndex !== $index">
             <app-input-field-component
@@ -13,6 +13,7 @@
             ></app-input-field-component>
             <app-measurements-component
               [selectedValue]="ingredient.type"
+              (selectedSend)="onSelected($event)"
             ></app-measurements-component>
           </div>
           <div class="text">

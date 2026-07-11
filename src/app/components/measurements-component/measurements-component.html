@@ -1,4 +1,4 @@
-<section (click)="toggle()">
+<section (click)="toggle()" [class.open]="rotate">
   <p>{{ selectedValue }}</p>
   <svg
     [class.rotate]="rotate"

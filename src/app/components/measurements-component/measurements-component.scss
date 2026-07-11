@@ -1,7 +1,7 @@
 section {
   width: 80px;
   height: 36px;
-  border-radius: 48px;
+  border-radius: 18px;
   background-color: rgba(250, 240, 230, 1);
   font-family: var(--font-quicksand);
   font-weight: 500;
@@ -16,8 +16,14 @@ section {
   cursor:
     url('/assets/img/cursor_hand.png') 0 0,
     pointer;
+
   p {
     margin: 0px;
+  }
+
+  &.open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }
 
@@ -26,14 +32,19 @@ section {
   top: 100%;
   left: 0;
   width: 100%;
-  height: 20px;
+  height: auto;
   display: flex;
   align-items: start;
   flex-direction: column;
-  margin-left: 10px;
   gap: 1px;
+  background-color: rgba(250, 240, 230, 1);
+  padding: 4px 3px 6.5px 13px; 
+  box-sizing: border-box;
+
+  border-radius: 0 0 18px 18px;
 
   p {
+    margin: 0px;
     &:hover {
       font-weight: 700;
       text-align: start;
@@ -46,7 +57,7 @@ section {
 }
 
 @media (max-width: 1450px) {
-section{
-  font-size: var(--font-size-18);
-}
+  section {
+    font-size: var(--font-size-18);
+  }
 }
