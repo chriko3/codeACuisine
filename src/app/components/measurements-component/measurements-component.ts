@@ -12,11 +12,19 @@ export class MeasurementsComponent {
 
   @Output() selectedSend = new EventEmitter<string>();
 
+  /**
+   * Toggles the rotate state.
+   * Changes the value from true to false or from false to true.
+   */
   toggle() {
     this.rotate = !this.rotate;
   }
 
-  select(selection:string){
+  /**
+   * Saves the selected value.
+   * Emits the selection to the listener.
+   */
+  select(selection: string) {
     this.selectedValue = selection;
     this.selectedSend.emit(selection);
   }

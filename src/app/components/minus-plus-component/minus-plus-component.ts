@@ -11,6 +11,10 @@ export class MinusPlusComponent {
 
   @Output() clicked = new EventEmitter<void>();
 
+  /**
+   * Runs when the user clicks.
+   * Emits the click event to the listener.
+   */
   onClick() {
     this.clicked.emit();
   }

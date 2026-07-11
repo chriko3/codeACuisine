@@ -7,11 +7,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrl: './edit-delete-component.scss',
 })
 export class EditDeleteComponent {
-  @Input() editOrDelete: 'edit' | 'delete' = 'edit'
+  @Input() editOrDelete: 'edit' | 'delete' = 'edit';
   @Output() clicked = new EventEmitter<void>();
   selected = false;
 
-  toggle(){
+  /**
+   * Toggles the selected state.
+   * Emits a click event after changing the state.
+   */
+  toggle() {
     this.selected = !this.selected;
     this.clicked.emit();
   }

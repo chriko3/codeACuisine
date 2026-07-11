@@ -14,12 +14,19 @@ export class IngredientsListComponent {
   @Output() delete = new EventEmitter<number>();
   @Output() edit = new EventEmitter<number>();
 
+  /**
+   * Emits the index of the ingredient to delete.
+   * Sends the index to the listener.
+   */
   deleteIngredient(index: number) {
     this.delete.emit(index);
   }
 
-  editIngredient(index:number){
+  /**
+   * Emits the index of the ingredient to edit.
+   * Sends the index to the listener.
+   */
+  editIngredient(index: number) {
     this.edit.emit(index);
-
   }
 }

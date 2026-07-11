@@ -38,6 +38,11 @@ export class CatRecipePage {
     private cdr: ChangeDetectorRef,
   ) {}
 
+  /**
+   * Loads the recipes for the current cuisine.
+   * Gets the URL, loads the data and updates the recipe list.
+   * Shows an empty state when no recipes are found.
+   */
   ngOnInit() {
     this.route.url.subscribe((event) => {
       this.url = event[1].path;
@@ -56,10 +61,18 @@ export class CatRecipePage {
     });
   }
 
+  /**
+   * Creates an array with a given length.
+   * Used to create repeated items in the template.
+   */
   getArray(n: number): number[] {
     return Array(Math.ceil(n)).fill(0);
   }
 
+  /**
+   * Opens a recipe page by its ID.
+   * Navigates to the recipe details view.
+   */
   openRecipe(id: number) {
     this.router.navigate(['/recipe', id], {
       queryParams: {
@@ -68,6 +81,10 @@ export class CatRecipePage {
     });
   }
 
+  /**
+   * Moves to the next recipe page.
+   * Updates the recipe range and scrolls to the top.
+   */
   nextPage() {
     if (this.endRecipes < this.recipes.length) {
       this.startRecipes += 15;
@@ -76,6 +93,10 @@ export class CatRecipePage {
     }
   }
 
+  /**
+   * Moves to the previous recipe page.
+   * Updates the recipe range and scrolls to the top.
+   */
   previousPage() {
     if (this.startRecipes >= 15) {
       this.startRecipes -= 15;
@@ -84,6 +105,10 @@ export class CatRecipePage {
     }
   }
 
+  /**
+   * Changes to a specific recipe page.
+   * Updates the recipe range and scrolls to the top.
+   */
   goToPage(page: number) {
     this.startRecipes = (page - 1) * 15;
     this.endRecipes = page * 15;

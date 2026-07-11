@@ -9,7 +9,11 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class AddComponent {
   @Output() clicked = new EventEmitter<void>();
 
-  onClick(){
+  /**
+   * Runs when the user clicks.
+   * Emits the click event to notify the listener.
+   */
+  onClick() {
     this.clicked.emit();
   }
 }

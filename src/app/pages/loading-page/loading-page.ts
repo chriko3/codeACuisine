@@ -1,7 +1,7 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { MenuBarComponent } from '../../components/menu-bar-component/menu-bar-component';
 import { Router, RouterLink } from '@angular/router';
-import { SecondaryButtonComponent } from "../../components/secondary-button-component/secondary-button-component";
+import { SecondaryButtonComponent } from '../../components/secondary-button-component/secondary-button-component';
 
 @Component({
   selector: 'app-loading-page',
@@ -27,6 +27,11 @@ export class LoadingPage {
   interval: any;
   error = false;
 
+  /**
+   * Starts the loading process.
+   * Changes the loading text and checks the session storage for results or errors.
+   * Redirects to the results page when data is available.
+   */
   ngOnInit() {
     this.error = false;
     this.displayLoadingText = this.loadingText[this.index];
@@ -39,7 +44,6 @@ export class LoadingPage {
       const sStorage = sessionStorage.getItem('kiRecipes');
       if (sStorage) {
         const parsed = JSON.parse(sStorage);
-        console.log(parsed);
         if (parsed.error) {
           this.error = true;
           clearInterval(this.interval);
@@ -51,6 +55,9 @@ export class LoadingPage {
     }, 2600);
   }
 
+  /**
+   * Stops the loading interval when the component is destroyed.
+   */
   ngOnDestroy() {
     clearInterval(this.interval);
   }

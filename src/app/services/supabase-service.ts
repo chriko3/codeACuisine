@@ -10,6 +10,10 @@ export class SupabaseService {
     'sb_publishable_xGeMRhxNbq7I8qxqfCv_oA_njqQlwzr',
   );
 
+  /**
+   * Subscribes to recipe changes by ID.
+   * Updates the likes value when the recipe changes.
+   */
   subscribeToRecipesByIdGetLikes(id: number, callback: (likes: number) => void) {
     this.supabase
       .channel('custom-all-channel')
@@ -24,10 +28,17 @@ export class SupabaseService {
       .subscribe();
   }
 
+  /**
+   * Removes all active recipe subscriptions.
+   */
   unsubscribeRecipes() {
     this.supabase.removeAllChannels();
   }
 
+  /**
+   * Saves a new recipe to the database.
+   * Inserts the recipe data and returns the saved result.
+   */
   async saveRecipes(
     name: string,
     time: number,
@@ -64,6 +75,10 @@ export class SupabaseService {
     return data;
   }
 
+  /**
+   * Gets all recipes from the database.
+   * Returns recipes sorted by newest first.
+   */
   async getAllRecipes() {
     let { data } = await this.supabase
       .from('recipes')
@@ -72,7 +87,11 @@ export class SupabaseService {
     return data;
   }
 
-  async getAmountLastRecipes(amount:number) {
+  /**
+   * Gets a specific amount of latest recipes.
+   * Returns the newest recipes from the database.
+   */
+  async getAmountLastRecipes(amount: number) {
     let { data } = await this.supabase
       .from('recipes')
       .select('*')
@@ -81,21 +100,37 @@ export class SupabaseService {
     return data;
   }
 
+  /**
+   * Gets recipes by cuisine type.
+   * Returns all recipes matching the given cuisine.
+   */
   async getRecipesByCuisine(cuisine: string) {
     let { data } = await this.supabase.from('recipes').select('*').eq('cuisine', cuisine);
     return data;
   }
 
+  /**
+   * Gets a recipe by its ID.
+   * Returns the matching recipe data.
+   */
   async getRecipesById(id: number) {
     let { data } = await this.supabase.from('recipes').select('*').eq('id', id);
     return data;
   }
 
+  /**
+   * Gets recipes by name.
+   * Returns all recipes with the given name.
+   */
   async getRecipesByName(name: string) {
     let { data } = await this.supabase.from('recipes').select('*').eq('name', name);
     return data;
   }
 
+  /**
+   * Adds one like to a recipe.
+   * Updates the recipe like count in the database.
+   */
   async likeRecipeById(id: number) {
     const { data } = await this.supabase.from('recipes').select('likes').eq('id', id).single();
     await this.supabase
@@ -104,6 +139,10 @@ export class SupabaseService {
       .eq('id', id);
   }
 
+  /**
+   * Removes one like from a recipe.
+   * Updates the recipe like count in the database.
+   */
   async unlikeRecipeById(id: number) {
     const { data } = await this.supabase.from('recipes').select('likes').eq('id', id).single();
     await this.supabase

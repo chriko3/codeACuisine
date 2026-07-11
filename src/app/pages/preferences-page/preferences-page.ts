@@ -36,6 +36,9 @@ export class PreferencesPage {
     private http: HttpClient,
   ) {}
 
+  /**
+   * Loads saved recipe data from the session storage.
+   */
   ngOnInit() {
     const sStorage = sessionStorage.getItem('kiRecipes');
     if (sStorage) {
@@ -43,6 +46,10 @@ export class PreferencesPage {
     }
   }
 
+  /**
+   * Increases the selected value.
+   * Limits the maximum number of portions or persons.
+   */
   increase(portionsOrPersons: 'portions' | 'persons') {
     if (portionsOrPersons == 'persons') {
       if (this[portionsOrPersons] < 4) {
@@ -55,24 +62,41 @@ export class PreferencesPage {
     }
   }
 
+  /**
+   * Decreases the selected value.
+   * Limits the minimum value to one.
+   */
   decrease(portionsOrPersons: 'portions' | 'persons') {
     if (this[portionsOrPersons] > 1) {
       this[portionsOrPersons]--;
     }
   }
 
+  /**
+   * Updates the selected cooking time tag.
+   */
   onSelectedTagCookingTime(tag: string) {
     this.activeTagCookingTime = tag;
   }
 
+  /**
+   * Updates the selected cuisine tag.
+   */
   onSelectedCuisine(tag: string) {
     this.activeTagCuisine = tag;
   }
 
+  /**
+   * Updates the selected diet preference tag.
+   */
   onSelectedDietPreferences(tag: string) {
     this.activeTagDietPreferences = tag;
   }
 
+  /**
+   * Creates a recipe request with the selected preferences.
+   * Sends the data and navigates to the loading page.
+   */
   generateARecipe() {
     if (
       this.activeTagCookingTime == '' ||
@@ -92,6 +116,10 @@ export class PreferencesPage {
     }
   }
 
+  /**
+   * Sends the selected preferences to the server.
+   * Saves the received recipes in the session storage.
+   */
   sendPreferencesList() {
     this.http
       .post<any[]>('http://localhost:5678/webhook/preferences', {
@@ -100,7 +128,6 @@ export class PreferencesPage {
       .subscribe({
         next: (res) => {
           sessionStorage.setItem('kiRecipes', JSON.stringify(res));
-          console.log(res);
           this.recipes = res;
         },
       });

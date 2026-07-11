@@ -12,9 +12,4 @@ export class MenuBarComponent {
   @Input() displayArrow: true | false = false;
   @Input() text?:string;
   @Input() goTo?:string;
-  
-  log(){
-    console.log('clicked');
-    
-  }
 }

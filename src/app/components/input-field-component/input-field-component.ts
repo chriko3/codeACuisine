@@ -13,6 +13,10 @@ export class InputFieldComponent {
 
   @Output() inputTextSend = new EventEmitter<string>();
 
+  /**
+   * Gets the input value from the event.
+   * Emits the value to the listener.
+   */
   getInput(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.inputTextSend.emit(value);

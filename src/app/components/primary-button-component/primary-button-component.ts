@@ -12,6 +12,10 @@ export class PrimaryButtonComponent {
 
   @Output() clicked = new EventEmitter<void>();
 
+  /**
+   * Runs when the user clicks.
+   * Emits a click event to the listener.
+   */
   onClick() {
     this.clicked.emit();
   }

@@ -34,27 +34,48 @@ export class GenerateRecipePage {
 
   enoughtIngredients = false;
 
+  /**
+   * Runs when the component starts.
+   * Clears the session storage.
+   */
   ngOnInit() {
     this.deleteSessionStorage();
   }
 
+  /**
+   * Updates the ingredient value.
+   * Gets a word suggestion for the entered ingredient.
+   */
   onIngredientChange(value: string) {
     this.ingredient = value;
     this.suggestion = this.wordSuggestionService.searchWord(this.ingredient);
   }
 
+  /**
+   * Updates the amount value.
+   */
   onAmountChange(value: string) {
     this.amount = value;
   }
 
+  /**
+   * Updates the selected ingredient type.
+   */
   onSelectedChange(value: string) {
     this.type = value;
   }
 
+  /**
+   * Clears all data from the session storage.
+   */
   deleteSessionStorage() {
     sessionStorage.clear();
   }
 
+  /**
+   * Adds a new ingredient to the ingredient list.
+   * Resets the input values and checks the ingredient count.
+   */
   addToIngredientsList() {
     if (this.ingredient != '' && this.amount != '') {
       this.ingredientList = [
@@ -72,16 +93,28 @@ export class GenerateRecipePage {
     }
   }
 
+  /**
+   * Removes an ingredient from the list.
+   * Updates the list and checks the ingredient count.
+   */
   deleteIngredient(index: number) {
     this.ingredientList.splice(index, 1);
     this.ingredientList = [...this.ingredientList];
     this.checkIfEnoughtIngredients();
   }
 
+  /**
+   * Edits an ingredient by its index.
+   * Currently only logs the index.
+   */
   editIngredient(index: number) {
     console.log(index);
   }
 
+  /**
+   * Checks if enough ingredients are added.
+   * Sets the state based on the ingredient count.
+   */
   checkIfEnoughtIngredients() {
     if (this.ingredientList.length >= 3) {
       this.enoughtIngredients = true;
@@ -90,6 +123,10 @@ export class GenerateRecipePage {
     }
   }
 
+  /**
+   * Sends the ingredient list to the server.
+   * Posts the data to the webhook endpoint.
+   */
   sendIngriedentList() {
     this.http
       .post('http://localhost:5678/webhook/ingredients', {

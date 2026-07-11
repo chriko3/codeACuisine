@@ -15,6 +15,10 @@ export class RecipeCardResultsComponent {
 
   @Output() clicked = new EventEmitter<void>();
 
+  /**
+   * Runs when the user clicks.
+   * Sends the click event to the listener.
+   */
   onClick() {
     this.clicked.emit();
   }

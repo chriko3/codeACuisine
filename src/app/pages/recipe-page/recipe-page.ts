@@ -41,6 +41,10 @@ export class RecipePage {
   liked = false;
   loading = true;
 
+  /**
+   * Loads the recipe data when the component starts.
+   * Gets the recipe ID, source and checks the current like status.
+   */
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.recipeNumber = Number(params.get('id')) - 1;
@@ -54,6 +58,10 @@ export class RecipePage {
     this.checkSourceAndSetArray();
   }
 
+  /**
+   * Checks if the current recipe is liked.
+   * Updates the liked state.
+   */
   checkIfLiked() {
     if (this.likedRecipes.includes(this.urlNumber)) {
       this.liked = true;
@@ -62,6 +70,11 @@ export class RecipePage {
     }
     this.cdr.detectChanges();
   }
+
+  /**
+   * Checks the recipe source and loads the correct recipe data.
+   * Gets recipes from storage or database and updates likes.
+   */
 
   checkSourceAndSetArray() {
     if (this.source == 'generating') {
@@ -100,14 +113,25 @@ export class RecipePage {
     }
   }
 
+  /**
+   * Stops the recipe subscription when the component is destroyed.
+   */
   ngOnDestroy() {
     this.supabaseService.unsubscribeRecipes();
   }
 
+  /**
+   * Creates an array with a given length.
+   * Used to display repeated items.
+   */
   getArray(n: number): number[] {
     return Array(n).fill(0);
   }
 
+  /**
+   * Adds or removes a recipe from the liked list.
+   * Updates the like status and saves the changes.
+   */
   likeUnlikeRecipe() {
     const index = this.likedRecipes.indexOf(this.urlNumber);
     if (index === -1) {

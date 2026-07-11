@@ -22,7 +22,7 @@ import { TimeFormatPipe } from '../../services/time-format-pipe';
 })
 export class CookbookPage {
   constructor(
-    private router:Router,
+    private router: Router,
     private supabaseService: SupabaseService,
     private cdr: ChangeDetectorRef,
   ) {}
@@ -30,6 +30,10 @@ export class CookbookPage {
   recipes: any[] = [];
   loading = true;
 
+  /**
+   * Loads all recipes when the component starts.
+   * Updates the recipe list and stops the loading state.
+   */
   ngOnInit() {
     this.supabaseService.getAllRecipes().then((data) => {
       this.recipes = data ?? [];
@@ -38,6 +42,10 @@ export class CookbookPage {
     });
   }
 
+  /**
+   * Opens a recipe page by its ID.
+   * Navigates to the recipe details view.
+   */
   openRecipe(id: number) {
     this.router.navigate(['/recipe', id], {
       queryParams: {

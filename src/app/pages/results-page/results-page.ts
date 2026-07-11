@@ -26,6 +26,11 @@ export class ResultsPage {
 
   sStorage = sessionStorage.getItem('kiRecipes');
   recipes: any[] = [];
+
+  /**
+   * Loads generated recipes from the session storage.
+   * Saves the recipes to the database or redirects if no data exists.
+   */
   ngOnInit() {
     if (this.sStorage) {
       this.recipes = JSON.parse(this.sStorage).recipes;
@@ -35,6 +40,10 @@ export class ResultsPage {
     }
   }
 
+  /**
+   * Saves recipes to the database.
+   * Checks for existing recipes before saving new ones.
+   */
   saveToDB() {
     this.supabaseService.getRecipesByName(this.recipes[0].name).then((data) => {
       if (!data || data.length === 0) {
@@ -59,6 +68,10 @@ export class ResultsPage {
     });
   }
 
+  /**
+   * Opens a recipe page by its index.
+   * Navigates to the recipe details view.
+   */
   openRecipe(index: number) {
     this.router.navigate(['/recipe', index], {
       queryParams: {

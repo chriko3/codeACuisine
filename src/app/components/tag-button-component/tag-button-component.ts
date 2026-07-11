@@ -8,12 +8,16 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TagButtonComponent {
   @Input() text?: string;
-  @Input() optionalText?:string;
+  @Input() optionalText?: string;
   @Input() isSelected = false;
   @Input() clickable = true;
 
   @Output() selectedTag = new EventEmitter<string>();
 
+  /**
+   * Emits the current tag text.
+   * Sends the text value to the listener.
+   */
   toggle() {
     this.selectedTag.emit(this.text);
   }

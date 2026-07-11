@@ -558,6 +558,10 @@ export class WordSuggestionService {
     'weiße Schokolade',
   ];
 
+  /**
+   * Searches for a matching word from the word list.
+   * Returns a suggestion if the search text matches a word.
+   */
   searchWord(search: string): string | undefined {
     if (search.length < 2) {
       return undefined;

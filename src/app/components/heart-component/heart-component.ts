@@ -8,8 +8,12 @@ import { Component } from '@angular/core';
 })
 export class HeartComponent {
   selected = false;
-  
-  toggle(){
+
+  /**
+   * Toggles the selected state.
+   * Changes the value from true to false or from false to true.
+   */
+  toggle() {
     this.selected = !this.selected;
   }
 }
