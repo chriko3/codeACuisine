@@ -22,7 +22,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './preferences-page.scss',
 })
 export class PreferencesPage {
-  portions = 1;
+  portions = 2;
   persons = 1;
   activeTagCookingTime = '';
   activeTagCuisine = '';
@@ -56,7 +56,7 @@ export class PreferencesPage {
         this[portionsOrPersons]++;
       }
     } else {
-      if (this[portionsOrPersons] < 10) {
+      if (this[portionsOrPersons] < 12) {
         this[portionsOrPersons]++;
       }
     }
