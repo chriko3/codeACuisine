@@ -1,0 +1,368 @@
+{
+  "name": "codeACuisine",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "$getWorkflowStaticData('global').ingredients = $input.all().map(i => i.json);\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1312,
+        0
+      ],
+      "id": "4c89f4d3-e007-409b-8aee-28b61d5f164d",
+      "name": "Save everything into a JSON"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2bdc9e4a-7a40-4038-84e6-0c7df1853d46",
+              "name": "ingredientList",
+              "value": "={{ $json.body.ingredientList }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1536,
+        0
+      ],
+      "id": "b9e4299c-11ff-406f-ba2d-c797c34eb3f6",
+      "name": "Filter ingredient Name, amount, type from user"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ingredients",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1760,
+        0
+      ],
+      "id": "777d6c7b-85ba-4cbc-88fd-5f8fbd21ad09",
+      "name": "Receives user's ingredient list ",
+      "webhookId": "4673d8e0-309d-4a18-b216-fbeca2878c6d"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "preferences",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1760,
+        480
+      ],
+      "id": "c451ac57-37c5-4bb1-9224-45b855cfe3bb",
+      "name": "Receives user's preferences",
+      "webhookId": "4673d8e0-309d-4a18-b216-fbeca2878c6d"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2bdc9e4a-7a40-4038-84e6-0c7df1853d46",
+              "name": "allPreferences",
+              "value": "={{ $json.body.allPreferences }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1536,
+        480
+      ],
+      "id": "feca5700-9e83-4032-9d35-b5d4bb6c1cb2",
+      "name": "Filter preference list from input"
+    },
+    {
+      "parameters": {
+        "jsCode": "const stored = $getWorkflowStaticData(\"global\").ingredients;\nconst incoming = $input.first().json;\nconst staticData = $getWorkflowStaticData(\"global\");\nconst today = new Date().toISOString().split(\"T\")[0];\n\nstaticData.genCounter ??= {};\nstaticData.genCounter[today] ??= 0;\nstaticData.genCounter[today]++;\n\nreturn [\n  {\n    json: {\n      ...stored[0],\n      ...incoming,\n      today,\n      count: staticData.genCounter[today],\n    },\n  },\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1312,
+        480
+      ],
+      "id": "55577927-a990-4a2e-afce-0c92dd2c28a6",
+      "name": "Combine both inputs into a JSON"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ff4973d1-82fb-4ddb-9fc4-45d0c793c2a2",
+              "leftValue": "={{ $json.count }}",
+              "rightValue": 10,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1088,
+        480
+      ],
+      "id": "5870d897-2cce-4f6b-aefc-de3a92e48538",
+      "name": "Limit of 10 request a day"
+    },
+    {
+      "parameters": {
+        "jsCode": "return {error: 'stop'}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -800,
+        624
+      ],
+      "id": "8534d475-b151-428d-afca-18541c59ddd4",
+      "name": "Returns error if the limit is reached"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein KI-Kochassistent. Deine Aufgabe ist es, aus strukturierten JSON-Daten vollständige Rezepte zu erstellen.\n\nDu erhältst zwei JSON-Objekte:\n\n{{ JSON.stringify($json.ingredientList) }} - Liste von Zutaten\nJede Zutat hat:\n- ingredient (Name der Zutat)\n- amount (Menge)\n- type (Einheit: gram, ml, piece)\n\n{{ JSON.stringify($json.allPreferences) }} - Enthält die Rahmenbedingungen für das Rezept:\n- portions (Anzahl Portionen)\n- persons (Anzahl Personen, die kochen)\n- cookingtime (Quick = bis 20 min, Medium = 25–40 min, Complex = über 45 min)\n- cuisine (Land der Küche)\n- dietpreferences\n\nAUFGABE\nErstelle genau 3 Rezepte, die alle Bedingungen erfüllen, sich aber deutlich voneinander unterscheiden (unterschiedliche Zubereitungsart, Gericht-Typ oder Stil). Jedes Rezept ist ein eigenes Objekt im \"recipes\"-Array.\n\nREGELN – VALIDIERUNG (WICHTIG – vor allem anderen prüfen, strikt einhalten)\nBevor du irgendetwas generierst, prüfe JEDE Zutat in ingredientList einzeln nach folgendem Kriterium:\n\nEine Zutat ist NUR dann gültig, wenn sie ein reales Lebensmittel oder eine reale Zutat ist, \ndie für den DIREKTEN MENSCHLICHEN VERZEHR bestimmt und in einem Rezept sinnvoll verwendbar ist.\n\nAls UNGÜLTIG gelten unter anderem (nicht abschließend):\n- Gegenstände, Möbel, Werkzeuge, Elektronik oder sonstige Non-Food-Artikel\n- Fantasiewörter, Tippfehler ohne erkennbare Zutat, unsinnige oder leere Angaben\n- Tierfutter, Tiernahrung oder Futtermittel jeglicher Art (z.B. Katzenfutter, Hundefutter, Vogelfutter, Fischfutter)\n- Lebende Tiere, nicht essbare Tierarten oder Tiere, die nicht zum menschlichen Verzehr bestimmt sind\n- Chemikalien, Reinigungsmittel, Kosmetikprodukte, Medikamente, Drogen oder giftige/gesundheitsschädliche Substanzen\n- Rohstoffe oder Materialien, die nicht direkt als Nahrungsmittel gegessen werden (z.B. Erde, Plastik, Metall, Holz, Stoff)\n- Zutaten, die zwar existieren, aber niemals roh oder in einem normalen Rezept verwendet werden (z.B. reine Zusatzstoffe, industrielle Chemikalien)\n\nIm Zweifel gilt: Wenn eine durchschnittliche Person die Zutat NICHT normalerweise in ihrer Küche \nverwenden oder kaufen würde, um sie zu essen, ist sie UNGÜLTIG.\n\n- Falls ALLE Zutaten gültig sind: fahre normal fort und gib die Rezepte im unten stehenden Format zurück.\n- Falls auch nur EINE Zutat ungültig ist:\n  Gib AUSSCHLIESSLICH folgendes JSON zurück, nichts anderes, kein Markdown, keine Erklärung:\n  { \"error\": true, \"message\": \"Invalid ingredient detected\", \"invalidIngredients\": [\"<Name der ungültigen Zutat auf Englisch>\"] }\n  In diesem Fall NIEMALS das \"recipes\"-Array, keinen Fließtext und keine teilweise Antwort zurückgeben.\n  Prüfe ALLE Zutaten vollständig, auch wenn du schon eine ungültige gefunden hast, und liste ALLE ungültigen Zutaten im \"invalidIngredients\"-Array auf, nicht nur die erste.\n\nREGELN – ZUTATEN\n- Jedes der 3 Rezepte muss alle Hauptzutaten aus ingredientList verwenden, darf sie aber unterschiedlich verarbeiten/kombinieren (z.B. gebraten, gebacken, als Sauce, etc.).\n- Erfinde keine zusätzlichen Hauptzutaten.\n- Kleinere Zusatzzutaten (Gewürze, Salz, Zucker, Öl, Kräuter, etc.) sind erlaubt, aber nur in kleinen Mengen und nur in den Einheiten g, ml oder piece.\n- Nichts Ausgefallenes bei extraIngredients – nur Dinge, die man normalerweise zuhause hat.\n\nREGELN – ÜBERSETZUNG UND EINHEITEN (WICHTIG)\n- Alle Zutatennamen aus ingredientList müssen ins Englische übersetzt werden, auch wenn sie im Input auf Deutsch oder einer anderen Sprache stehen. Übernimm NIEMALS den Originalnamen unübersetzt.\n- Das gilt für yourIngredients UND extraIngredients gleichermaßen.\n- type/Einheit muss IMMER einer von exakt diesen drei Werten sein: \"g\", \"ml\", \"piece\" (niemals \"gram\", \"grams\", \"milliliter\", \"pieces\" oder andere Schreibweisen).\n- amount ist immer eine reine Zahl (kein Text, keine Einheit im amount-Feld, z.B. amount: 200, type: \"g\" — NICHT amount: \"200g\").\n\nREGELN – RAHMENBEDINGUNGEN\n- Passe jedes Rezept an die cuisine-Vorgabe an (Richtwert, bestmögliche kulinarische Interpretation wenn nicht optimal passend).\n- dietpreferences sind ein Muss-Kriterium und dürfen NIEMALS verletzt werden (Hard Constraint).\n- cuisine und cookingtime sind Richtwerte, an die du dich bestmöglich anpassen sollst (Soft Constraint), aber cookingtime darf im Zweifel nicht überschritten werden.\n- time (in Minuten) muss innerhalb des gewählten cookingtime-Buckets liegen (Quick: ≤20, Medium: 25–40, Complex: >45).\n- Skaliere alle Mengen sinnvoll auf portions.\n- Falls ein Feld in allPreferences leer oder nicht gesetzt ist, ignoriere die entsprechende Einschränkung, ohne das JSON-Format zu verändern.\n- Jedes Rezept muss realistisch, kochbar und logisch sein.\n\nREGELN – NÄHRWERTE\n- energie, protein, fat, carbs beziehen sich auf EINE Portion (nicht das gesamte Rezept).\n- Runde alle Nährwerte auf ganze Zahlen.\n\nREGELN – DIRECTIONS (WICHTIG – strikt einhalten)\nErstelle einen Block \"directions\" als Array. Jeder Eintrag ist ein Objekt mit:\n- title: kurzer Titel (max. 3–4 Wörter)\n- chef: \"Chef 1\", \"Chef 2\", \"Chef 3\" oder \"Chef 4\" (abhängig von persons)\n- task: Beschreibung der Aufgabe (max. 45 Wörter)\n\nRegeln für directions:\n- Wenn persons = 1: immer nur Chef 1.\n- Wenn persons = 2–4: Aufgaben logisch und möglichst parallel auf die Chefs aufteilen.\n- Jeder Schritt muss eindeutig einem Chef zugeordnet sein.\n- Keine doppelten oder redundanten Schritte.\n- Reihenfolge muss echter Kochlogik folgen: Vorbereitung → Kochen → Fertigstellen → Anrichten.\n- chef in directions ist immer eine reine Zahl (1, 2, 3 oder 4), niemals ein String wie \"Chef 1\" oder \"Chef1\".\n\nSPRACHE\nALLES auf Englisch, in einfacher, klarer Sprache — inklusive Zutatennamen (product), Titel (name), Direction-Titel und Tasks. Es darf KEIN deutsches oder fremdsprachiges Wort im Output vorkommen.\n\n{\n  \"recipes\": [\n    {\n      \"name\": \"\",              // max. 35 Zeichen, Englisch, passend zum Gericht\n      \"time\": 0,                // Minuten, muss zu cookingTime-Bucket passen\n      \"portions\": 0,             // aus allPreferences\n      \"persons\": 0,              // aus allPreferences\n      \"cuisine\": \"\",              // aus allPreferences\n      \"dietpreferences\": \"\",     // aus allPreferences\n      \"cookingTime\": \"\",         // aus allPreferences (Quick/Medium/Complex)\n      \"energie\": 0,              // kcal, pro Portion, gerundet\n      \"protein\": 0,              // gram, pro Portion, gerundet\n      \"fat\": 0,                  // gram, pro Portion, gerundet\n      \"carbs\": 0,                // gram, pro Portion, gerundet\n      \"likes\":0, //immer 0\n      \"yourIngredients\": [\n        { \"amount\": 0, \"type\": \"g\", \"product\": \"\" } // aus ingredientList, product ins Englische übersetzt, type nur g/ml\n      ],\n      \"extraIngredients\": [\n        { \"amount\": 0, \"type\": \"g\", \"product\": \"\" } // product auf Englisch, type nur g/ml\n      ],\n      \"directions\": [\n        { \"title\": \"\", \"chef\": 0, \"task\": \"\" } // chef ist eine reine Zahl (1-4), kein Text\n      ]\n    }\n  ]\n}\n",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -864,
+        224
+      ],
+      "id": "9d42f20c-195c-4707-8afa-e88c4ebe5f9b",
+      "name": "AI: generates 3 recipes",
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-flash-lite",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        -864,
+        432
+      ],
+      "id": "b453b2e8-a50a-42b9-b667-a0a32778d54c",
+      "name": "Gemini 3.1 flash lite model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Q8qevfqlgeBq3PRu",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "let raw = $input.first().json.output;\n\n// remove code fences\nraw = raw.replace(/```json/g, '').replace(/```/g, '').trim();\n\n// parse safely\nconst data = JSON.parse(raw);\n\nreturn [{ json: data }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -544,
+        224
+      ],
+      "id": "d5c0de95-99a3-4e50-94b8-a2ce1a773968",
+      "name": "Returns JSON with 3 recipes"
+    }
+  ],
+  "pinData": {
+    "Receives user's ingredient list ": [
+      {
+        "json": {
+          "headers": {
+            "host": "localhost:5678",
+            "connection": "keep-alive",
+            "content-length": "178",
+            "pragma": "no-cache",
+            "cache-control": "no-cache",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+            "accept": "application/json, text/plain, */*",
+            "sec-ch-ua": "\"Chromium\";v=\"148\", \"Google Chrome\";v=\"148\", \"Not/A)Brand\";v=\"99\"",
+            "content-type": "application/json",
+            "sec-ch-ua-mobile": "?0",
+            "origin": "http://localhost:4200",
+            "sec-fetch-site": "same-site",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "referer": "http://localhost:4200/",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "ingredientList": [
+              {
+                "ingredient": "Fisch",
+                "amount": "200",
+                "type": "gram"
+              },
+              {
+                "ingredient": "Kleiderschrank",
+                "amount": "50",
+                "type": "gram"
+              },
+              {
+                "ingredient": "Spinat",
+                "amount": "50",
+                "type": "gram"
+              }
+            ]
+          },
+          "webhookUrl": "http://localhost:5678/webhook-test/ingredients",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Filter ingredient Name, amount, type from user": {
+      "main": [
+        [
+          {
+            "node": "Save everything into a JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receives user's ingredient list ": {
+      "main": [
+        [
+          {
+            "node": "Filter ingredient Name, amount, type from user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receives user's preferences": {
+      "main": [
+        [
+          {
+            "node": "Filter preference list from input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter preference list from input": {
+      "main": [
+        [
+          {
+            "node": "Combine both inputs into a JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine both inputs into a JSON": {
+      "main": [
+        [
+          {
+            "node": "Limit of 10 request a day",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit of 10 request a day": {
+      "main": [
+        [
+          {
+            "node": "AI: generates 3 recipes",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Returns error if the limit is reached",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI: generates 3 recipes": {
+      "main": [
+        [
+          {
+            "node": "Returns JSON with 3 recipes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini 3.1 flash lite model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI: generates 3 recipes",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "e3a5bb2a-ec35-4ea2-b4fa-868db73f318b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4b8cb7a80f24db67aa4c97d189fed06ea08fa547fa235986ae9d72cd9e397339"
+  },
+  "nodeGroups": [],
+  "id": "wWjPMSAi1CMfefmP",
+  "tags": []
+}
