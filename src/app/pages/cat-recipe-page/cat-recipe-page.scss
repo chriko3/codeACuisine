@@ -42,9 +42,7 @@
     padding: 4px;
     transition: background-color 0.15s ease-in;
     border-radius: 4px;
-    cursor:
-      url('/assets/img/cursor_hand.png') 0 0,
-      pointer;
+    cursor: pointer;
 
     &:hover {
       background-color: rgba(250, 240, 230, 0.7);
@@ -81,7 +79,7 @@
 }
 
 @media (max-width: 1000px) {
-  .list{
+  .list {
     width: 100%;
   }
 }

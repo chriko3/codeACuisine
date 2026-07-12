@@ -14,9 +14,7 @@ section {
 }
 
 svg {
-  cursor:
-    url('/assets/img/cursor_hand.png') 0 0,
-    pointer;
+  cursor: pointer;
   outline: none;
 }
 
@@ -29,9 +27,7 @@ svg {
   font-family: var(--font-quicksand);
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-500);
-  cursor:
-    url('/assets/img/cursor_hand.png') 0 0,
-    pointer;
+  cursor: pointer;
   p {
     margin: 0px;
   }
@@ -46,15 +42,15 @@ svg {
 }
 
 @media (max-width: 1450px) {
-  .container{
+  .container {
     padding: 16px;
     height: auto;
   }
 
-  .arrow{
+  .arrow {
     bottom: -20px;
-    p{
-      display:none;
+    p {
+      display: none;
     }
   }
 }

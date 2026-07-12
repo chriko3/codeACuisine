@@ -27,7 +27,7 @@
             ></app-edit-delete-component>
             <app-edit-delete-component
               [editOrDelete]="'delete'"
-              (clicked)="deleteIngredient(ingredientList.length - 1 - $index)"
+              (clicked)="deleteIngredient( $index)"
             ></app-edit-delete-component>
           </div>
         </li>

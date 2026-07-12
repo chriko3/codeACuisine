@@ -100,9 +100,7 @@
 }
 
 .click {
-  cursor:
-    url('/assets/img/cursor_hand.png') 0 0,
-    pointer;
+  cursor: pointer;
 }
 
 .infos {
@@ -292,13 +290,74 @@
     display: flex;
   }
 }
+@media (max-width: 1700px) {
+  .steps-all {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    align-items: center;
+  }
 
+  .step-head {
+    font-size: var(--font-size-218);
+    font-weight: 700;
+  }
+
+  .step {
+    width: 400px;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+  }
+
+  .responsiv {
+    display: none;
+  }
+}
 @media (max-width: 1450px) {
   .container {
     margin: 0px 8px;
     padding: 8px 8px;
   }
 
+  .ingredients-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .ingredients-col {
+    flex: 0 0 auto;
+    max-width: 260px;
+
+    p:first-of-type {
+      text-align: center;
+      font-size: var(--font-size-18);
+    }
+    ul {
+      li {
+        font-size: var(--font-size-18);
+      }
+    }
+  }
+
+  .cookbook {
+    font-size: var(--font-size-16);
+    font-weight: 500;
+    max-width: 100%;
+    margin: 0px 8px;
+    margin-top: 40px;
+    padding: 20px;
+  }
+
+  .new-recipie {
+    justify-content: center;
+    margin-left: 16px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 1200px) {
   .recipe-head {
     border-radius: 12px;
     flex-direction: column;
@@ -326,11 +385,6 @@
     align-items: center;
     text-align: center;
   }
-  .facts {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 
   .fact {
     flex: 0 1 120px;
@@ -343,46 +397,6 @@
     flex-wrap: wrap;
   }
 
-  .ingredients-list {
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-  }
-
-
-  .ingredients-col {
-    flex: 0 0 auto;
-    max-width: 260px;
-
-    p:first-of-type {
-      text-align: center;
-      font-size: var(--font-size-18);
-    }
-    ul {
-      li {
-        font-size: var(--font-size-18);
-      }
-    }
-  }
-
-  .steps-all {
-    display: flex;
-    flex-direction: column;
-    padding: 0px;
-    align-items: center;
-  }
-
-  .step-head {
-    font-size: var(--font-size-218);
-    font-weight: 700;
-  }
-
-  .step {
-    width: 400px;
-    max-width: 100%;
-    box-sizing: border-box;
-    padding: 16px;
-  }
   .feedback {
     padding: 16px;
     div {
@@ -396,23 +410,12 @@
       font-size: var(--font-size-16);
     }
   }
+}
 
-  .cookbook {
-    font-size: var(--font-size-16);
-    font-weight: 500;
-    max-width: 100%;
-    margin: 0px 8px;
-    margin-top: 40px;
-    padding: 20px;
-  }
-
-  .new-recipie {
+@media (max-width: 600px) {
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-left: 16px;
-    padding-bottom: 40px;
-  }
-
-  .responsiv {
-    display: none;
   }
 }

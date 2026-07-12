@@ -16,9 +16,7 @@ section {
 
   &:hover {
     background-color: rgba(250, 240, 230, 0.7);
-    cursor:
-      url('/assets/img/cursor_hand.png') 0 0,
-      pointer;
+    cursor: pointer;
   }
 }
 
@@ -86,9 +84,7 @@ section {
 
     &:hover {
       background-color: transparent;
-      cursor:
-        url('/assets/img/cursor_hand.png') 0 0,
-        pointer;
+      cursor: pointer;
     }
   }
 

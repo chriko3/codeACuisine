@@ -13,9 +13,7 @@ section {
   justify-content: space-between;
   box-sizing: border-box;
   transition: transform 200ms ease;
-  cursor:
-    url('/assets/img/cursor_hand.png') 0 0,
-    pointer;
+  cursor: pointer;
 
   p {
     margin: 0px;
