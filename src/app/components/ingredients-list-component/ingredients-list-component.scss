@@ -103,11 +103,12 @@ li {
 @media (max-width: 1450px) {
   section {
     max-width: 100%;
-
+    height: 100%;
+    max-height: none;
     height: auto;
     font-size: var(--font-size-18);
     padding: 18px;
-    overflow: hidden;
+    overflow-y: visible;
   }
 }
 
