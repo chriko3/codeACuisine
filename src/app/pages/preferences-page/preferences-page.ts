@@ -121,7 +121,7 @@ export class PreferencesPage {
    */
   sendPreferencesList() {
     this.http
-      .post<any[]>('http://localhost:5678/webhook/preferences', {
+      .post<any[]>('https://christoph-kohout.app.n8n.cloud/webhook/preferences', {
         allPreferences: this.allPreferences,
       })
       .subscribe({

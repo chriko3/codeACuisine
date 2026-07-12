@@ -10,16 +10,29 @@
         <p>{{ displayLoadingText }}</p>
       </div>
       <div class="error" [class.display-none]="!error">
-        <p>Ups! Somthing went wrong...</p>
-        <p>
-          Some ingredient quantities do not match the selected number of servings, or incorrect
-          ingredients were entered. Please review the details and try again.
-        </p>
-        <app-secondary-button-component
-          [color]="'white'"
-          [text]="'Go back to ingredients'"
-          routerLink="/generate-recipe"
-        ></app-secondary-button-component>
+        @if (toManyRequests) {
+          <p>Daily limit reached!</p>
+          <p>
+            You've used all 10 free generations for today. Please come back tomorrow to generate
+            more recipes.
+          </p>
+          <app-secondary-button-component
+            [color]="'white'"
+            [text]="'Go back to home'"
+            routerLink="/"
+          ></app-secondary-button-component>
+        } @else {
+          <p>Ups! Somthing went wrong...</p>
+          <p>
+            Some ingredient quantities do not match the selected number of servings, or incorrect
+            ingredients were entered. Please review the details and try again.
+          </p>
+          <app-secondary-button-component
+            [color]="'white'"
+            [text]="'Go back to ingredients'"
+            routerLink="/generate-recipe"
+          ></app-secondary-button-component>
+        }
       </div>
     </div>
   </div>

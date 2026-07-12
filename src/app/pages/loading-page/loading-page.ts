@@ -26,6 +26,7 @@ export class LoadingPage {
   index = 0;
   interval: any;
   error = false;
+  toManyRequests = false;
 
   /**
    * Starts the loading process.
@@ -47,6 +48,9 @@ export class LoadingPage {
         if (parsed.error) {
           this.error = true;
           clearInterval(this.interval);
+          if (parsed.error == 'stop') {
+            this.toManyRequests = true;
+          }
         } else {
           this.router.navigate(['/results']);
         }
