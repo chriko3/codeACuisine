@@ -33,31 +33,31 @@ export class LoadingPage {
    * Changes the loading text and checks the session storage for results or errors.
    * Redirects to the results page when data is available.
    */
-  ngOnInit() {
-    this.error = false;
-    this.displayLoadingText = this.loadingText[this.index];
-    this.interval = setInterval(() => {
-      this.index++;
-      if (this.index >= this.loadingText.length) {
-        this.index = 0;
-      }
-      this.displayLoadingText = this.loadingText[this.index];
-      const sStorage = sessionStorage.getItem('kiRecipes');
-      if (sStorage) {
-        const parsed = JSON.parse(sStorage);
-        if (parsed.error) {
-          this.error = true;
-          clearInterval(this.interval);
-          if (parsed.error == 'stop') {
-            this.toManyRequests = true;
-          }
-        } else {
-          this.router.navigate(['/results']);
-        }
-      }
-      this.cdr.detectChanges();
-    }, 2600);
-  }
+  // ngOnInit() {
+  //   this.error = false;
+  //   this.displayLoadingText = this.loadingText[this.index];
+  //   this.interval = setInterval(() => {
+  //     this.index++;
+  //     if (this.index >= this.loadingText.length) {
+  //       this.index = 0;
+  //     }
+  //     this.displayLoadingText = this.loadingText[this.index];
+  //     const sStorage = sessionStorage.getItem('kiRecipes');
+  //     if (sStorage) {
+  //       const parsed = JSON.parse(sStorage);
+  //       if (parsed.error) {
+  //         this.error = true;
+  //         clearInterval(this.interval);
+  //         if (parsed.error == 'stop') {
+  //           this.toManyRequests = true;
+  //         }
+  //       } else {
+  //         this.router.navigate(['/results']);
+  //       }
+  //     }
+  //     this.cdr.detectChanges();
+  //   }, 2600);
+  // }
 
   /**
    * Stops the loading interval when the component is destroyed.

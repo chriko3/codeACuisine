@@ -121,10 +121,10 @@ export class GenerateRecipePage {
    * Posts the data to the webhook endpoint.
    */
   sendIngriedentList() {
-    this.http
-      .post('https://christoph-kohout.app.n8n.cloud/webhook/ingredients', {
-        ingredientList: this.ingredientList,
-      })
-      .subscribe((res) => {});
+    // this.http
+    //   .post('https://christoph-kohout.app.n8n.cloud/webhook/ingredients', {
+    //     ingredientList: this.ingredientList,
+    //   })
+    //   .subscribe((res) => {});
   }
 }

@@ -120,15 +120,15 @@ export class PreferencesPage {
    * Saves the received recipes in the session storage.
    */
   sendPreferencesList() {
-    this.http
-      .post<any[]>('https://christoph-kohout.app.n8n.cloud/webhook/preferences', {
-        allPreferences: this.allPreferences,
-      })
-      .subscribe({
-        next: (res) => {
-          sessionStorage.setItem('kiRecipes', JSON.stringify(res));
-          this.recipes = res;
-        },
-      });
+    // this.http
+    //   .post<any[]>('https://christoph-kohout.app.n8n.cloud/webhook/preferences', {
+    //     allPreferences: this.allPreferences,
+    //   })
+    //   .subscribe({
+    //     next: (res) => {
+    //       sessionStorage.setItem('kiRecipes', JSON.stringify(res));
+    //       this.recipes = res;
+    //     },
+    //   });
   }
 }

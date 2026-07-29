@@ -2,7 +2,7 @@
   <div class="wrapper">
     <app-menu-bar-component [color]="'white'"></app-menu-bar-component>
     <div class="container">
-      <div class="load" [class.display-none]="error">
+      <!-- <div class="load" [class.display-none]="error">
         <div class="animation">
           <img src="assets/img/loading.gif" alt="" />
         </div>
@@ -33,6 +33,22 @@
             routerLink="/generate-recipe"
           ></app-secondary-button-component>
         }
+      </div> -->
+      <div class="demo">
+        <div>
+          <p>Demo Project</p>
+          <p>
+            This is a portfolio demo project. The n8n connection is currently disabled to avoid
+            unnecessary hosting costs. You can find my n8n workflow on GitHub. Feel free to explore and test the rest of the application.
+          </p>
+
+        </div>
+
+        <app-secondary-button-component
+          [color]="'white'"
+          [text]="'Go to next page'"
+          routerLink="/cookbook"
+        ></app-secondary-button-component>
       </div>
     </div>
   </div>
